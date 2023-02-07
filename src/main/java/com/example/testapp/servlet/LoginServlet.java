@@ -16,6 +16,7 @@ import static com.example.testapp.model.SearchVariables.*;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 //Hello
+    //Hi
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
