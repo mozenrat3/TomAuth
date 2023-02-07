@@ -1,3 +1,5 @@
+
+
 package com.example.testapp.servlet;
 
 import com.example.testapp.model.User;
@@ -16,9 +18,13 @@ import static java.util.Objects.nonNull;
 
 @WebFilter({"/login","/welcome"})
 public class AuthFilter implements Filter {
+    public AuthFilter() {
+
+    }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void destroy() {
+
     }
 
     @Override
@@ -38,7 +44,7 @@ public class AuthFilter implements Filter {
         @SuppressWarnings("unchecked") final AtomicReference<UserOperations> info = (AtomicReference<UserOperations>) req.getServletContext().getAttribute("info");
 
         final HttpSession session = req.getSession();
-
+        String servletPath = req.getServletPath();
         if (nonNull(session) &&
                 nonNull(session.getAttribute("login")) &&
                 nonNull(session.getAttribute("password"))) {
@@ -71,18 +77,21 @@ public class AuthFilter implements Filter {
 
 
         if (role.equals(User.ROLE.ADMIN) || role.equals(User.ROLE.USER)) {
-           req.getRequestDispatcher(JSP_PATH+WELCOME_PAGE+".jsp").forward(req, resp);
-      //      resp.sendRedirect(req.getContextPath() + "/welcome");
+            req.getRequestDispatcher(JSP_PATH + WELCOME_PAGE + ".jsp").forward(req, resp);
+            //      resp.sendRedirect(req.getContextPath() + "/welcome");
         } else {
 
-           // resp.sendRedirect(req.getContextPath()+"/login");
-           req.getRequestDispatcher(JSP_PATH+LOGIN_PAGE+".jsp").forward(req,resp);
+            // resp.sendRedirect(req.getContextPath()+"/login");
+            req.getRequestDispatcher(JSP_PATH + LOGIN_PAGE + ".jsp").forward(req, resp);
         }
+
+
     }
-
-
     @Override
-    public void destroy() {
-    }
+   public void init(FilterConfig fConfig)throws ServletException{
 
+   }
 }
+
+
+

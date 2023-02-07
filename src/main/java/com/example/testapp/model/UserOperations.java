@@ -4,8 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserOperations {
-    private final List<User> store = new ArrayList<>();
+    private static final List<User> store = new ArrayList<>();
+    public static User getUserByLoginPassword(final String login, final String password) {
 
+        User result = new User();
+        result.setId(-1);
+
+        for (User user : store) {
+            if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
+                result = user;
+            }
+        }
+
+        return result;
+    }
 
     public boolean add(final User user) {
 

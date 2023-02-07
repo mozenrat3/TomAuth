@@ -12,11 +12,17 @@
     <title>Title</title>
 </head>
 <body>
-Назовем это главной страницей
+
+<td>Username: </td>
+<td><input type="text" value="<%= session.getAttribute("login") %>" /></td>
 <br>
+<br>
+<td>Password: </td>
+<td><input type="text" value="<%= session.getAttribute("password") %>" /></td>
+<br><br>
 <a href="<c:url value='/logout' />">Logout</a>
 
-<br>
+
 
 <%--<a href="/${pageContext.request.contextPath}/inner">Inner Page</a>--%>
 </body>
