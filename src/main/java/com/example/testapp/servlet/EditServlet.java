@@ -1,5 +1,6 @@
 package com.example.testapp.servlet;
 
+
 import com.example.testapp.model.User;
 import com.example.testapp.model.UserOperations;
 
@@ -16,14 +17,14 @@ import java.io.PrintWriter;
 
 import static com.example.testapp.model.SearchVariables.*;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/loginedit")
+public class EditServlet extends HttpServlet {
     //Hello
     //Hi
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String path = "/WEB-INF/jsp/login.jsp";
+        String path = "/WEB-INF/jsp/loginedit.jsp";
 
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
@@ -34,18 +35,24 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    //   String login = (String) req.getSession().getAttribute(user.);
         String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        User user = UserOperations.getUserByLoginPassword(login, password);
-        if (user == null) {
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-            dispatcher.forward(req, resp);
-        } else {
-            req.getSession().setAttribute("user", user);
-            req.getSession().setAttribute("login",login);
+        String password = req.getParameter("newpassword");
+        String login2 = (String) req.getSession().getAttribute("login");
+        String password2 = (String) req.getSession().getAttribute("password");
+        User user = UserOperations.getUserByLoginPassword(login2, password2);
+      //  req.getSession().setAttribute("user", user);
+        //user= (User) req.getSession().getAttribute("user");
+       // String login = (String) req.getSession().getAttribute(user.l);
+      //  String login = user.getLogin();
+        if(login2.equals(login)) {
+            user.setPassword(password);
             req.getSession().setAttribute("password",password);
-            resp.sendRedirect(req.getContextPath() + "/welcome");
+            req.getRequestDispatcher("/WEB-INF/jsp/loginedit.jsp").forward(req, resp);
+        }
+
+        else{
+            resp.sendRedirect(req.getContextPath() + "/login");
         }
 
     }

@@ -18,7 +18,15 @@ public class UserOperations {
 
         return result;
     }
-
+//    public static User setPassword(final String login, final String password){
+//        User result = new User();
+//        result.setPassword();
+//        for (User user : store) {
+//            if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
+//                result = user;
+//            }
+//        }
+//    }
     public boolean add(final User user) {
 
         for (User u : store) {

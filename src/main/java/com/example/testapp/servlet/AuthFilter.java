@@ -17,7 +17,7 @@ import static com.example.testapp.model.SearchVariables.*;
 import static java.lang.Boolean.TRUE;
 import static java.util.Objects.nonNull;
 
-@WebFilter({"/login", "/welcome"})
+@WebFilter({"/login", "/welcome","/loginedit"})
 public class AuthFilter implements Filter {
     public AuthFilter() {
 

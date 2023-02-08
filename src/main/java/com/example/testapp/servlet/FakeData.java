@@ -21,9 +21,6 @@ public class FakeData implements ServletContextListener {
 
         info = new AtomicReference<>(new UserOperations());
 
-        info.get().add(new User(1, "DimaAdm", "1", ADMIN));
-        info.get().add(new User(2, "DimaUser1", "2", USER));
-        info.get().add(new User(3, "DimaUser2", "3", USER));
         info.get().add(new User(4, "1", "1", USER));
 
         final ServletContext servletContext =

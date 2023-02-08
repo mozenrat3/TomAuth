@@ -9,19 +9,18 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
-    public LogoutServlet() {
-        super();
-    }
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect(req.getContextPath()+"/");
-      //  resp.sendRedirect(req.getContextPath() + "/login" + ".jhtml");
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        this.doGet(req, resp);
+
+
+        final HttpSession session = req.getSession();
+
+        session.removeAttribute("password");
+        session.removeAttribute("login");
+        session.removeAttribute("role");
+
+        resp.sendRedirect(super.getServletContext().getContextPath());
     }
 
 }
