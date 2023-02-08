@@ -28,7 +28,7 @@
     <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
     <br>
     <br>
-    <a href="<c:url value='/welcome' />">Main Page</a>
+<%--    <a href="<c:url value='/welcome' />">Main Page</a>--%>
 <%--    <a href="/${pageContext.request.contextPath}/welcome">Welcome Page</a>--%>
     <br>
 

@@ -37,20 +37,15 @@ public class LoginServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        User user = UserOperations.getUserByLoginPassword(login,password);
-        if(user == null){
+        User user = UserOperations.getUserByLoginPassword(login, password);
+        if (user == null) {
             RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-
             dispatcher.forward(req, resp);
-
-        }
-        else {
+        } else {
+            req.getSession().setAttribute("user", user);
             resp.sendRedirect(req.getContextPath() + "/welcome");
         }
 
     }
 
-    public void destroy() {
-        super.destroy(); // Just puts "destroy" string in log
-    }
 }

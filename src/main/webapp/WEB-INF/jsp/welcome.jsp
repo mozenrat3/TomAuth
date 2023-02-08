@@ -14,11 +14,11 @@
 <body>
 
 <td>Username: </td>
-<td><input type="text" value="<%= session.getAttribute("login") %>" /></td>
+<td><input type="text" value="${user.login}" /></td>
 <br>
 <br>
 <td>Password: </td>
-<td><input type="text" value="<%= session.getAttribute("password") %>" /></td>
+<td><input type="text" value="${user.password}" /></td>
 <br><br>
 <a href="<c:url value='/logout' />">Logout</a>
 
