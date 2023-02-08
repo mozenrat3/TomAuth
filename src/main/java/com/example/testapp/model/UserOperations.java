@@ -5,20 +5,20 @@ import java.util.List;
 
 public class UserOperations {
     private static final List<User> store = new ArrayList<>();
+
     public static User getUserByLoginPassword(final String login, final String password) {
 
-        User result = new User();
-        result.setId(-1);
 
         for (User user : store) {
             if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
-                result = user;
+                return user;
             }
         }
 
-        return result;
+        return null;
     }
-//    public static User setPassword(final String login, final String password){
+
+    //    public static User setPassword(final String login, final String password){
 //        User result = new User();
 //        result.setPassword();
 //        for (User user : store) {

@@ -43,8 +43,8 @@ public class LoginServlet extends HttpServlet {
             dispatcher.forward(req, resp);
         } else {
             req.getSession().setAttribute("user", user);
-            req.getSession().setAttribute("login",login);
-            req.getSession().setAttribute("password",password);
+            req.getSession().setAttribute("login", login);
+            req.getSession().setAttribute("password", password);
             resp.sendRedirect(req.getContextPath() + "/welcome");
         }
 
