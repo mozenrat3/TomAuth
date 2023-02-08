@@ -19,9 +19,14 @@
     <label>Введите Ваш логин</label>
     <input type="text" name="login" placeholder="Введите Ваш логин" required>
     <br>
+     <label>Введите старый пароль</label>
+        <input type="password" name="password" placeholder="Введите ваш пароль" required>
     <br>
     <label>Введите новый пароль</label>
     <input type="password" name="newpassword" placeholder="Введите новый пароль" required>
+        <br>
+        <label>Подтвердите пароль</label>
+        <input type="password" name="comfirmpassword" placeholder="Подтвердите пароль" required>
     <button class="form_auth_button" type="submit" name="form_auth_submit">Изменить</button>
     <br>
     <br>

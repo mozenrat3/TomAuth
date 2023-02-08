@@ -37,16 +37,25 @@ public class EditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //   String login = (String) req.getSession().getAttribute(user.);
         String login = req.getParameter("login");
-        String password = req.getParameter("newpassword");
-        String login2 = (String) req.getSession().getAttribute("login");
-        String password2 = (String) req.getSession().getAttribute("password");
-        User user = UserOperations.getUserByLoginPassword(login2, password2);
-        if (login2.equals(login)) {
-            user.setPassword(password);
-            req.getSession().setAttribute("password", password);
-            req.getRequestDispatcher("/WEB-INF/jsp/loginedit.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect(req.getContextPath() + "/login");
+        String password = req.getParameter("password");
+        String newpassword = req.getParameter("newpassword");
+        String confirmpassword =req.getParameter("comfirmpassword");
+        String seslogin = (String) req.getSession().getAttribute("login");
+        String sespassword = (String) req.getSession().getAttribute("password");
+        User user = UserOperations.getUserByLoginPassword(seslogin,sespassword);
+        if(seslogin.equals(login) && sespassword.equals(password)){
+            if(newpassword.equals(confirmpassword)){
+                user.setPassword(newpassword);
+                req.getSession().setAttribute("password", newpassword);
+                req.getRequestDispatcher("/WEB-INF/jsp/loginedit.jsp").forward(req,resp);
+            }
+            else{
+                resp.sendRedirect(req.getContextPath()+"/loginedit");
+            }
+
+        }
+        else {
+            resp.sendRedirect(req.getContextPath()+"/loginedit");
         }
 
     }
