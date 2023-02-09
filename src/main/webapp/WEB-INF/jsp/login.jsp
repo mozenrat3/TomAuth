@@ -17,7 +17,7 @@
 
     <main>
         <div id = "myform">
-            <div id = "formname"> <h3>Sign in</h3></div>
+            <div id = "formname"> <h1>Sign in</h1></div>
         <form method="post" action="">
             <table>
                 <tr>
