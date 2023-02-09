@@ -2,34 +2,48 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Login</title>
+    <link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet" type="text/css">
+
+    <title>Sign in</title>
 </head>
-<body>
-Здравствуйте, введите ваши данные для авторизации
-<%--<p><c:out value = "${requestScope.dataForView}"/></p>--%>
-<br>
-<%--/${pageContext.request.contextPath}/login --%>
-<form method="post" action="">
-<%--    <input name="login">--%>
-<%--    <button type="submit" >Send</button>--%>
-    <label>Введите Ваш логин</label>
-    <input type="text" name="login" placeholder="Введите Ваш логин" required >
-    <br>
-    <br>
-    <label>Введите Ваш пароль</label>
-    <input type="password" name="password" placeholder="Введите пароль" required >
-    <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
-    <br>
-    <br>
-<%--    <a href="<c:url value='/welcome' />">Main Page</a>--%>
-<%--    <a href="/${pageContext.request.contextPath}/welcome">Welcome Page</a>--%>
-    <br>
+    <body>
+    <header>
+        <jsp:include page="header.jsp"></jsp:include>
+    </header>
+    <div id="menu">
+        <jsp:include page="menu.jsp"></jsp:include>
+    </div>
 
-<%--    <input type="hidden" name="redirect" value="${pageContext.request.contextPath}/welcome">--%>
 
-<%--    <c:if test="${val == 1}">--%>
-<%--        <c:redirect url="/welcome" />--%>
-<%--    </c:if>--%>
-</form>
-</body>
+    <main>
+        <div id = "myform">
+            <div id = "formname"> <h3>Sign in</h3></div>
+        <form method="post" action="">
+            <table>
+                <tr>
+                    <td>Login</td>
+                    <td><input type="text" name="login" placeholder="Enter your login" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" placeholder="Enter your password" required></td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+            </table>
+
+
+        </form>
+        </div>
+    </main>
+    </body>
+<footer>
+    <jsp:include page="footer.jsp"></jsp:include>
+</footer>
+
+
 </html>
