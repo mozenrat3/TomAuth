@@ -17,6 +17,10 @@ main {
     position: relative;
 }
 table {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
     border: 1px solid grey;
 }
 /* границы ячеек первого ряда таблицы */
@@ -29,6 +33,14 @@ td {
 }
 footer {
     flex: 0 0 auto;
+}
+#userCrud{
+padding: 10px;
+    height: 40px;
+    background:lavender;
+}
+#refs{
+    float: bottom; padding: 14px; text-align: center;
 }
 
 
