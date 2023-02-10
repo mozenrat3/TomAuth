@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    padding: 16px;
+    background: #e6f2ff;
+    position: relative;
+}
+table {
+    border: 1px solid grey;
+}
+/* границы ячеек первого ряда таблицы */
+th {
+    border: 1px solid grey;
+}
+/* границы ячеек тела таблицы */
+td {
+    border: 1px solid grey;
+}
+footer {
+    flex: 0 0 auto;
+}
+
+

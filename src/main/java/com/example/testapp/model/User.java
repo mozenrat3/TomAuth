@@ -101,6 +101,6 @@ public class User {
     }
 
     public enum ROLE {
-        USER, ADMIN
+        USER, ADMIN, UNAUTH
     }
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static com.example.testapp.model.SearchVariables.*;
 
@@ -20,6 +21,7 @@ import static com.example.testapp.model.SearchVariables.*;
 public class LoginServlet extends HttpServlet {
     //Hello
     //Hi
+    private UserOperations info1;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -37,12 +39,18 @@ public class LoginServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+
         User user = UserOperations.getUserByLoginPassword(login, password);
         if (user == null) {
             RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp");
             dispatcher.forward(req, resp);
         } else {
             req.getSession().setAttribute("user", user);
+
+//           User user2= info1.getById(1);
+//            System.out.println("Hey my name is"+user2.getName());
+
+          //  System.out.println("Hey my name is  "+user.getName());
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("password", password);
             resp.sendRedirect(req.getContextPath() + "/welcome");

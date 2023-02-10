@@ -5,7 +5,23 @@ import java.util.List;
 
 public class UserOperations {
     private static final List<User> store = new ArrayList<>();
+  // private static final int count = store.size();
+    public static   int getCount(){
+        return  store.size();
+    }
+    public static User getById(int id) {
 
+        User result = new User();
+        result.setId(-1);
+
+        for (User user : store) {
+            if (user.getId() == id) {
+                result = user;
+            }
+        }
+
+        return result;
+    }
     public static User getUserByLoginPassword(final String login, final String password) {
 
 
