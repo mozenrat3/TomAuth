@@ -9,6 +9,9 @@ public class UserOperations {
     public static   int getCount(){
         return  store.size();
     }
+    public static List<User> getAllUsers(){
+        return store;
+    }
     public static User getById(int id) {
 
         User result = new User();

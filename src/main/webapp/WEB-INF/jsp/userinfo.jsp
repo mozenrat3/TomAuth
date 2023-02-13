@@ -1,5 +1,6 @@
 <%@ page import="com.example.testapp.model.User" %>
 <%@ page import="com.example.testapp.model.UserOperations" %>
+<%@ page import="static com.example.testapp.model.UserOperations.getAllUsers" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -40,9 +41,8 @@
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
-            int count = UserOperations.getCount();
-            for (int i = 1; i <= count; i++) {
-                User user = UserOperations.getById(i);
+
+            for (User user : getAllUsers()) {
                 String login = user.getLogin();
                 String password = user.getPassword();
                 String email = user.getEmail();
