@@ -34,6 +34,39 @@ public class UserOperations {
         return null;
     }
 
+    public static String getUserByLogin(final String login) {
+
+
+        for (User user : store) {
+            if (user.getLogin().equals(login)) {
+                return user.getLogin();
+            }
+        }
+
+        return null;
+    }
+        public static boolean deleteUserByLogin(final String login){
+        for (User user : store) {
+            if (user.getLogin().equals(login)) {
+
+                return store.remove(user);
+            }
+        }
+            return false;
+        }
+//написать при удалении юзера,все за ним превращаются в null
+    public static String getUserByEmail(final String email) {
+
+
+        for (User user : store) {
+            if (user.getEmail().equals(email)) {
+                return user.getEmail();
+            }
+        }
+
+        return null;
+    }
+
     public boolean add(final User user) {
 
         for (User u : store) {
@@ -43,31 +76,5 @@ public class UserOperations {
         }
 
         return store.add(user);
-    }
-
-//    public User.ROLE getRoleByLoginPassword(final String login, final String password) {
-//        User.ROLE result = User.ROLE.UNAUTH;
-//
-//        for (User user : store) {
-//            if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
-//                result = user.getRole();
-//            }
-//        }
-//
-//        return result;
-//    }
-
-    public boolean userIsExist(final String login, final String password) {
-
-        boolean result = false;
-
-        for (User user : store) {
-            if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
-                result = true;
-                break;
-            }
-        }
-
-        return result;
     }
 }

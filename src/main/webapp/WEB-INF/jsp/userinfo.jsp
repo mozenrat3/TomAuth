@@ -20,7 +20,7 @@
         |
         <a href="${pageContext.request.contextPath}/useradd">User Add</a>
         |
-        <a href="${pageContext.request.contextPath}/delete">User Delete</a>
+        <a href="${pageContext.request.contextPath}/userdelete">User Delete</a>
     </div>
 
 </div>
