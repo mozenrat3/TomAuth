@@ -10,10 +10,12 @@ public class User {
     private String surname;
     private String name;
     private String patronymic;
-  //  private LocalDate birthday;
+    //  private LocalDate birthday;
     private String birthday;
     private ROLE role;
-    public User(){}
+
+    public User() {
+    }
 
     public User(int id, String login, String password, String email, String surname, String name, String patronymic, String birthday, ROLE role) {
         this.id = id;

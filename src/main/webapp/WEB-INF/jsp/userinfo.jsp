@@ -53,7 +53,7 @@
                 String birthday = user.getBirthday();
                 User.ROLE role = user.getRole();
                 out.println("<tr><td>"+id +"</td><td>"+ login + "</td><td>" + password + "</td><td>" + email + "</td><td>" + surname + "</td><td>" + name + "</td><td>"
-                        + patronymic + "</td><td>" + birthday + "</td><td>" + role + "</td>"+"<td>"+"<a href="+request.getContextPath()+"/"+"useredit?userId="+id+">"+"UserEdit"+"</a>"+"</td>"+"</tr>");
+                        + patronymic + "</td><td>" + birthday + "</td><td>" + role + "</td>"+"<td>"+"<a href="+ request.getContextPath() + "/" + "useredit?userId=" + id+">"+"UserEdit"+"</a>"+"</td>"+"</tr>");
             }
         %>
     </table>

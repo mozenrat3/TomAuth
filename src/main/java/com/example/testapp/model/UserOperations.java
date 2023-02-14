@@ -5,13 +5,16 @@ import java.util.List;
 
 public class UserOperations {
     private static final List<User> store = new ArrayList<>();
-  // private static final int count = store.size();
-    public static   int getCount(){
-        return  store.size();
+
+    // private static final int count = store.size();
+    public static int getCount() {
+        return store.size();
     }
-    public static List<User> getAllUsers(){
+
+    public static List<User> getAllUsers() {
         return store;
     }
+
     public static User getById(int id) {
 
         User result = new User();
@@ -25,6 +28,7 @@ public class UserOperations {
 
         return result;
     }
+
     public static User getUserByLoginPassword(final String login, final String password) {
 
 
@@ -60,16 +64,18 @@ public class UserOperations {
 
         return null;
     }
-        public static boolean deleteUserByLogin(final String login){
+
+    public static boolean deleteUserByLogin(final String login) {
         for (User user : store) {
             if (user.getLogin().equals(login)) {
 
                 return store.remove(user);
             }
         }
-            return false;
-        }
-//написать при удалении юзера,все за ним превращаются в null
+        return false;
+    }
+
+    //написать при удалении юзера,все за ним превращаются в null
     public static String getUserByEmail(final String email) {
 
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 @WebServlet("/welcome")
 public class WelcomeServlet extends HttpServlet {
     @Override
@@ -17,12 +18,12 @@ public class WelcomeServlet extends HttpServlet {
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
-       // resp.sendRedirect(req.getContextPath() + "/welcome");
-      //  req.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp").forward(req, resp);
+        // resp.sendRedirect(req.getContextPath() + "/welcome");
+        //  req.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      doGet(req,resp);
+        doGet(req, resp);
     }
 }

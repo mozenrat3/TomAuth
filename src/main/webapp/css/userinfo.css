@@ -1,6 +1,7 @@
 * {
     margin: 0;
 }
+
 html, body {
     height: 100%;
 }
@@ -16,31 +17,39 @@ main {
     background: #e6f2ff;
     position: relative;
 }
+
 table {
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid grey;
 }
+
 /* границы ячеек первого ряда таблицы */
 th {
     border: 1px solid grey;
 }
+
 /* границы ячеек тела таблицы */
 td {
     border: 1px solid grey;
 }
+
 footer {
     flex: 0 0 auto;
 }
-#userCrud{
-padding: 10px;
+
+#userCrud {
+    padding: 10px;
     height: 40px;
-    background:lavender;
+    background: lavender;
 }
-#refs{
-    float: bottom; padding: 14px; text-align: center;
+
+#refs {
+    float: bottom;
+    padding: 14px;
+    text-align: center;
 }
 
 

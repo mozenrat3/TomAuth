@@ -6,18 +6,18 @@
 
     <title>Sign in</title>
 </head>
-    <body>
-    <header>
-        <jsp:include page="header.jsp"></jsp:include>
-    </header>
-    <div id="menu">
-        <jsp:include page="menu.jsp"></jsp:include>
-    </div>
+<body>
+<header>
+    <jsp:include page="header.jsp"></jsp:include>
+</header>
+<div id="menu">
+    <jsp:include page="menu.jsp"></jsp:include>
+</div>
 
 
-    <main>
-        <div id = "myform">
-            <div id = "formname"> <h1>Sign in</h1></div>
+<main>
+    <div id="myform">
+        <div id="formname"><h1>Sign in</h1></div>
         <form method="post" action="">
             <table>
                 <tr>
@@ -38,9 +38,9 @@
 
 
         </form>
-        </div>
-    </main>
-    </body>
+    </div>
+</main>
+</body>
 <footer>
     <jsp:include page="footer.jsp"></jsp:include>
 </footer>

@@ -24,9 +24,10 @@ public class UserEdit extends HttpServlet {
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
     }
+
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        String userId=req.getParameter("userId");
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userId = req.getParameter("userId");
         User user = UserOperations.getById(Integer.parseInt(userId));
         int id = Integer.parseInt(userId);
         String login = req.getParameter("login");
@@ -37,28 +38,26 @@ public class UserEdit extends HttpServlet {
         String patronymic = req.getParameter("patronymic");
         String birthday = req.getParameter("birthday");
         User.ROLE role;
-        if(req.getParameter("role1") != null){
+        if (req.getParameter("role1") != null) {
             role = User.ROLE.valueOf("USER");
-        }
-        else {
+        } else {
             role = User.ROLE.valueOf("ADMIN");
         }
         PrintWriter out = resp.getWriter();
 
-        if((UserOperations.getUserByLogin(login)!= null && !Objects.equals(user.getLogin(), login)) || (UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))){
-            out.println ("u entered login, that exists in system,please choose a new login");
-            resp.sendRedirect(req.getContextPath()+"/"+"useredit?userId="+id);
-        }
-        else {
+        if ((UserOperations.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login)) || (UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
+            out.println("u entered login, that exists in system,please choose a new login");
+            resp.sendRedirect(req.getContextPath() + "/" + "useredit?userId=" + id);
+        } else {
 
-                user.setLogin(login);
-                user.setPassword(password);
-                user.setEmail(email);
-                user.setBirthday(birthday);
-                user.setName(name);
-                user.setPatronymic(patronymic);
-                user.setSurname(surname);
-                user.setRole(role);
+            user.setLogin(login);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setBirthday(birthday);
+            user.setName(name);
+            user.setPatronymic(patronymic);
+            user.setSurname(surname);
+            user.setRole(role);
 //            UserOperations userOperations = new UserOperations();
 //            userOperations.add(user);
             resp.sendRedirect(req.getContextPath() + "/userinfo");

@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
     //Hello
     //Hi
     private UserOperations info1;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -50,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 //           User user2= info1.getById(1);
 //            System.out.println("Hey my name is"+user2.getName());
 
-          //  System.out.println("Hey my name is  "+user.getName());
+            //  System.out.println("Hey my name is  "+user.getName());
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("password", password);
             resp.sendRedirect(req.getContextPath() + "/welcome");

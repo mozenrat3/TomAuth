@@ -18,8 +18,9 @@ public class UserInfoServlet extends HttpServlet {
 //        User user = UserOperations.getById(1);
 //            System.out.println("hey bitches my name is  "+ user.getName());
     }
+
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
 }

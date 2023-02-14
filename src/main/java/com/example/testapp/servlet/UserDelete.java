@@ -25,19 +25,19 @@ public class UserDelete extends HttpServlet {
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
     }
+
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
-            if(!login.equals(req.getSession().getAttribute("login"))){
-                UserOperations.deleteUserByLogin(login);
-                resp.sendRedirect(req.getContextPath() + "/userinfo");
-            }
-                else{
+        if (!login.equals(req.getSession().getAttribute("login"))) {
+            UserOperations.deleteUserByLogin(login);
+            resp.sendRedirect(req.getContextPath() + "/userinfo");
+        } else {
 //                resp.setContentType("text/html;charset=UTF-8");
 //                PrintWriter out = resp.getWriter();
 //                out.println("<script language = 'javascript'> alert ('Is this current user!') </ script>");
-                resp.sendRedirect(req.getContextPath() + "/userdelete");
-            }
-       // resp.sendRedirect(req.getContextPath() + "/userinfo");
+            resp.sendRedirect(req.getContextPath() + "/userdelete");
+        }
+        // resp.sendRedirect(req.getContextPath() + "/userinfo");
     }
 }

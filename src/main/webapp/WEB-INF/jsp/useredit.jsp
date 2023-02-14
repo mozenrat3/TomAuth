@@ -20,12 +20,12 @@
 
 
 <main>
-    <div id = "myform">
-        <div id = "formname"> <h2>user edit</h2></div>
+    <div id="myform">
+        <div id="formname"><h2>user edit</h2></div>
         <form method="post" action="">
             <table>
                 <%
-                    String userId=request.getParameter("userId");
+                    String userId = request.getParameter("userId");
                     User user = UserOperations.getById(Integer.parseInt(userId));
                     String login = user.getLogin();
                     String password = user.getPassword();
@@ -38,20 +38,25 @@
                 %>
                 <tr>
                     <td>Login</td>
-                    <td><input type="text" name="login" value="<%=login%>"  minlength="5" maxlength="16" required></td>
+                    <td><input type="text" name="login" value="<%=login%>" minlength="5" maxlength="16" required></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password" value="<%=password%>"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" autocomplete="off" required></td>
+                    <td><input type="password" name="password" value="<%=password%>"
+                               pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*"
+                               autocomplete="off" required></td>
                 </tr>
 
                 <tr>
                     <td>email</td>
-                    <td><input type="email" name="email" value= <%=email%> pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" size="30" required></td>
+                    <td><input type="email" name="email"
+                               value=<%=email%> pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" size="30" required>
+                    </td>
                 </tr>
                 <tr>
                     <td>surname</td>
-                    <td><input type="text" name="surname" value="<%=surname%>" pattern="[A-Za-zА-Яа-яЁё]{3,15}" required></td>
+                    <td><input type="text" name="surname" value="<%=surname%>" pattern="[A-Za-zА-Яа-яЁё]{3,15}"
+                               required></td>
                 </tr>
                 <tr>
                     <td>name</td>
@@ -59,7 +64,8 @@
                 </tr>
                 <tr>
                     <td>patronymic</td>
-                    <td><input type="text" name="patronymic" value="<%=patronymic%>"  pattern="[A-Za-zА-Яа-яЁё]{3,15}" required></td>
+                    <td><input type="text" name="patronymic" value="<%=patronymic%>" pattern="[A-Za-zА-Яа-яЁё]{3,15}"
+                               required></td>
                 </tr>
                 <tr>
                     <td>birthday</td>
