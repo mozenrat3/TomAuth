@@ -19,7 +19,7 @@
 
 <main>
     <div id = "myform">
-        <div id = "formname"> <h2>user add</h2></div>
+        <div id = "formname"> <h2>user delete</h2></div>
         <form method="post" action="">
             <table>
 

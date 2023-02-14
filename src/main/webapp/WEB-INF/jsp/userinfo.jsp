@@ -15,10 +15,8 @@
 <div id="menu">
     <jsp:include page="menu.jsp"></jsp:include>
 </div>
-<div id = "userCrud">
+<div id="userCrud">
     <div id="refs">
-        <a href="${pageContext.request.contextPath}/useredit">User Edit</a>
-        |
         <a href="${pageContext.request.contextPath}/useradd">User Add</a>
         |
         <a href="${pageContext.request.contextPath}/userdelete">User Delete</a>
@@ -30,6 +28,7 @@
     <table>
 
         <tr>
+            <th>id</th>
             <th>login</th>
             <th>password</th>
             <th>email</th>
@@ -38,11 +37,13 @@
             <th>patronymic</th>
             <th>birthday</th>
             <th>role</th>
+            <th>edit</th>
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
 
             for (User user : getAllUsers()) {
+                int id = user.getId();
                 String login = user.getLogin();
                 String password = user.getPassword();
                 String email = user.getEmail();
@@ -51,8 +52,8 @@
                 String patronymic = user.getPatronymic();
                 String birthday = user.getBirthday();
                 User.ROLE role = user.getRole();
-                out.println("<tr><td>" + login + "</td><td>" + password + "</td><td>" + email + "</td><td>" + surname + "</td><td>" + name + "</td><td>"
-                        + patronymic + "</td><td>" + birthday + "</td><td>" + role + "</tr>");
+                out.println("<tr><td>"+id +"</td><td>"+ login + "</td><td>" + password + "</td><td>" + email + "</td><td>" + surname + "</td><td>" + name + "</td><td>"
+                        + patronymic + "</td><td>" + birthday + "</td><td>" + role + "</td>"+"<td>"+"<a href="+request.getContextPath()+"/"+"useredit?userId="+id+">"+"UserEdit"+"</a>"+"</td>"+"</tr>");
             }
         %>
     </table>

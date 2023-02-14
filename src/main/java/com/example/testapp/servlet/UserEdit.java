@@ -13,30 +13,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
 
 @WebServlet("/useredit")
 public class UserEdit extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = "/WEB-INF/jsp/useredit.jsp";
-
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-
-        int id = Integer.parseInt(req.getParameter("id"));
+        String userId=req.getParameter("userId");
+        User user = UserOperations.getById(Integer.parseInt(userId));
+        int id = Integer.parseInt(userId);
         String login = req.getParameter("login");
-
         String password = req.getParameter("password");
-
-        if(UserOperations.getUserByLoginPassword(login,password)!= null){
-
-        }
         String email = req.getParameter("email");
-
         String surname = req.getParameter("surname");
         String name = req.getParameter("name");
         String patronymic = req.getParameter("patronymic");
@@ -49,18 +44,25 @@ public class UserEdit extends HttpServlet {
             role = User.ROLE.valueOf("ADMIN");
         }
         PrintWriter out = resp.getWriter();
-        if(UserOperations.getUserByLogin(login)!= null || UserOperations.getUserByEmail(email) != null){
+
+        if((UserOperations.getUserByLogin(login)!= null && !Objects.equals(user.getLogin(), login)) || (UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))){
             out.println ("u entered login, that exists in system,please choose a new login");
-            resp.sendRedirect(req.getContextPath() + "/useredit ");
+            resp.sendRedirect(req.getContextPath()+"/"+"useredit?userId="+id);
         }
         else {
-            User user = new User(id,login,password,email,surname,name,patronymic,birthday,role);
-            UserOperations userOperations = new UserOperations();
-            userOperations.add(user);
+
+                user.setLogin(login);
+                user.setPassword(password);
+                user.setEmail(email);
+                user.setBirthday(birthday);
+                user.setName(name);
+                user.setPatronymic(patronymic);
+                user.setSurname(surname);
+                user.setRole(role);
+//            UserOperations userOperations = new UserOperations();
+//            userOperations.add(user);
             resp.sendRedirect(req.getContextPath() + "/userinfo");
         }
-
-
         // Пишем проверки на несовпадение логинов, емэйлов как-то делаем авто добавляемый id,или на несовпадение их
         //Потом еще добавить id в юзер инфо и чекнуть, что будет если нового юзера добавить
         //User.ROLE role = User.ROLE.valueOf(req.getParameter("role"));
