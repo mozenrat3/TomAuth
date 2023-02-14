@@ -17,7 +17,7 @@
 </div>
 <div id = "userCrud">
     <div id="refs">
-        <a href="${pageContext.request.contextPath}/edit">User Edit</a>
+        <a href="${pageContext.request.contextPath}/useredit">User Edit</a>
         |
         <a href="${pageContext.request.contextPath}/useradd">User Add</a>
         |

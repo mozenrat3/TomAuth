@@ -33,9 +33,9 @@ public class UserDelete extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/userinfo");
             }
                 else{
-                resp.setContentType("text/html;charset=UTF-8");
-                PrintWriter out = resp.getWriter();
-                out.println("<script language = 'javascript'> alert ('Is this current user!') </ script>");
+//                resp.setContentType("text/html;charset=UTF-8");
+//                PrintWriter out = resp.getWriter();
+//                out.println("<script language = 'javascript'> alert ('Is this current user!') </ script>");
                 resp.sendRedirect(req.getContextPath() + "/userdelete");
             }
        // resp.sendRedirect(req.getContextPath() + "/userinfo");
