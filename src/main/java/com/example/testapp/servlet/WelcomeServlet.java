@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.example.testapp.model.User.ROLE.ADMIN;
+
 @WebServlet("/welcome")
 public class WelcomeServlet extends HttpServlet {
     @Override

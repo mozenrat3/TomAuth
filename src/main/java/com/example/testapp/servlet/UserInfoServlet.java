@@ -15,8 +15,6 @@ public class UserInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/jsp/userinfo.jsp").forward(req, resp);
-//        User user = UserOperations.getById(1);
-//            System.out.println("hey bitches my name is  "+ user.getName());
     }
 
     @Override

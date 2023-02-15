@@ -43,8 +43,11 @@ public class EditSecInfo extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         if ((UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
-            out.println("u entered login, that exists in system,please choose a new login");
-            resp.sendRedirect(req.getContextPath() + "/" + "editsecondaryinfo?userId=" + id);
+          //  out.println("u entered login, that exists in system,please choose a new login");
+            req.setAttribute("error", "This is email exist in system");
+            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editsecondaryinfo.jsp");
+            disp.include(req,resp);
+            //resp.sendRedirect(req.getContextPath() + "/" + "editsecondaryinfo?userId=" + id);
         } else {
             user.setEmail(email);
             user.setBirthday(birthday);

@@ -37,8 +37,9 @@ public class EditMainInfo extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         if ((UserOperations.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login))) {
-            out.println("u entered login, that exists in system,please choose a new login");
-            resp.sendRedirect(req.getContextPath() + "/" + "editmaininfo?userId=" + id);
+            req.setAttribute("error", "This is login exist in system");
+            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editmaininfo.jsp");
+            disp.include(req,resp);
         } else {
             if (newpassword.equals(confirmpassword) && !newpassword.equals(password)) {
                 user.setPassword(newpassword);
@@ -46,7 +47,9 @@ public class EditMainInfo extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/userinfo");
             }
             else {
-                resp.sendRedirect(req.getContextPath() + "/" + "editmaininfo?userId=" + id);
+                req.setAttribute("error", "new password dont equal confirm password");
+                RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editmaininfo.jsp");
+                disp.include(req,resp);
             }
         }
         // Пишем проверки на несовпадение логинов, емэйлов как-то делаем авто добавляемый id,или на несовпадение их

@@ -33,5 +33,9 @@ footer {
     position: absolute;
     left: 45%;
     top: -15%;
-
+}
+#error{
+    position: absolute;
+    left: 120%;
+    top: -15%;
 }

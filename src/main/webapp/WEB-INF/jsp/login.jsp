@@ -28,6 +28,13 @@
                     <td>Password</td>
                     <td><input type="password" name="password" placeholder="Enter your password" required></td>
                 </tr>
+                <div id="error">
+                    <%
+                        String login_msg=(String)request.getAttribute("error");
+                        if(login_msg!=null)
+                            out.println("<font color=red size=4px>"+login_msg+"</font>");
+                    %>
+                </div>
                 <tr>
                     <td colspan="1">
 

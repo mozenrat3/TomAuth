@@ -67,6 +67,13 @@
                     </td>
 
                 </tr>
+                <div id="error">
+                    <%
+                        String secedit_msg=(String)request.getAttribute("error");
+                        if(secedit_msg!=null)
+                            out.println("<font color=red size=4px>"+secedit_msg+"</font>");
+                    %>
+                </div>
                 <tr>
                     <td colspan="1">
 

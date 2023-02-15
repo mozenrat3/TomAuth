@@ -50,7 +50,13 @@
                      pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*"
                      autocomplete="off" required></td>
         </tr>
-
+        <div id="error">
+          <%
+            String mainedit_msg=(String)request.getAttribute("error");
+            if(mainedit_msg!=null)
+              out.println("<font color=red size=4px>"+mainedit_msg+"</font>");
+          %>
+        </div>
         <tr>
           <td colspan="1">
 

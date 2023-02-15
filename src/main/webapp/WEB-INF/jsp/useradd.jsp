@@ -71,7 +71,15 @@
                     </td>
 
                 </tr>
+                <div id="error">
+                    <%
+                        String add_msg=(String)request.getAttribute("error");
+                        if(add_msg!=null)
+                            out.println("<font color=red size=4px>"+add_msg+"</font>");
+                    %>
+                </div>
                 <tr>
+
                     <td colspan="1">
 
                         <input type="submit" value="Submit">

@@ -27,6 +27,13 @@
                     <td>Login</td>
                     <td><input type="text" name="login" placeholder="Enter  login" required></td>
                 </tr>
+                <div id="error">
+                    <%
+                        String delete_msg=(String)request.getAttribute("error");
+                        if(delete_msg!=null)
+                            out.println("<font color=red size=4px>"+delete_msg+"</font>");
+                    %>
+                </div>
                 <tr>
                     <td colspan="1">
 

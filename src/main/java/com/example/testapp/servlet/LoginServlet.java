@@ -10,29 +10,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.concurrent.atomic.AtomicReference;
 
-import static com.example.testapp.model.SearchVariables.*;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    //Hello
-    //Hi
-    private UserOperations info1;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String path = "/WEB-INF/jsp/login.jsp";
-
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
-        //req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
-
     }
 
     @Override
@@ -43,15 +32,14 @@ public class LoginServlet extends HttpServlet {
 
         User user = UserOperations.getUserByLoginPassword(login, password);
         if (user == null) {
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-            dispatcher.forward(req, resp);
+                req.setAttribute("error", "user is`nt exist, please enter your data correctly");
+
+           // RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+            disp.include(req,resp);
+           // dispatcher.forward(req, resp);
         } else {
             req.getSession().setAttribute("user", user);
-
-//           User user2= info1.getById(1);
-//            System.out.println("Hey my name is"+user2.getName());
-
-            //  System.out.println("Hey my name is  "+user.getName());
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("password", password);
             resp.sendRedirect(req.getContextPath() + "/welcome");

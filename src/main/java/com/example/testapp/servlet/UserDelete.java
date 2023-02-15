@@ -29,15 +29,19 @@ public class UserDelete extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
-        if (!login.equals(req.getSession().getAttribute("login"))) {
+        if(UserOperations.getUserByLogin(login) == null){
+            req.setAttribute("error", "This user does`nt exist");
+            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");
+            disp.include(req,resp);
+        } else if (login.equals(req.getSession().getAttribute("login"))) {
+            req.setAttribute("error", "Is this the current user, u can`t delete yourself");
+            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");
+            disp.include(req,resp);
+        }
+        else{
             UserOperations.deleteUserByLogin(login);
             resp.sendRedirect(req.getContextPath() + "/userinfo");
-        } else {
-//                resp.setContentType("text/html;charset=UTF-8");
-//                PrintWriter out = resp.getWriter();
-//                out.println("<script language = 'javascript'> alert ('Is this current user!') </ script>");
-            resp.sendRedirect(req.getContextPath() + "/userdelete");
         }
-        // resp.sendRedirect(req.getContextPath() + "/userinfo");
+
     }
 }
