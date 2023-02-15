@@ -10,16 +10,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
 
-@WebServlet("/useredit")
-public class UserEdit extends HttpServlet {
+@WebServlet("/editmaininfo")
+public class EditMainInfo extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = "/WEB-INF/jsp/useredit.jsp";
+        String path = "/WEB-INF/jsp/editmaininfo.jsp";
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
@@ -32,35 +31,23 @@ public class UserEdit extends HttpServlet {
         int id = Integer.parseInt(userId);
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        String email = req.getParameter("email");
-        String surname = req.getParameter("surname");
-        String name = req.getParameter("name");
-        String patronymic = req.getParameter("patronymic");
-        String birthday = req.getParameter("birthday");
-        User.ROLE role;
-        if (req.getParameter("role1") != null) {
-            role = User.ROLE.valueOf("USER");
-        } else {
-            role = User.ROLE.valueOf("ADMIN");
-        }
+        String newpassword = req.getParameter("newpassword");
+        String confirmpassword = req.getParameter("confirmpassword");
+
         PrintWriter out = resp.getWriter();
 
-        if ((UserOperations.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login)) || (UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
+        if ((UserOperations.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login))) {
             out.println("u entered login, that exists in system,please choose a new login");
-            resp.sendRedirect(req.getContextPath() + "/" + "useredit?userId=" + id);
+            resp.sendRedirect(req.getContextPath() + "/" + "editmaininfo?userId=" + id);
         } else {
-
-            user.setLogin(login);
-            user.setPassword(password);
-            user.setEmail(email);
-            user.setBirthday(birthday);
-            user.setName(name);
-            user.setPatronymic(patronymic);
-            user.setSurname(surname);
-            user.setRole(role);
-//            UserOperations userOperations = new UserOperations();
-//            userOperations.add(user);
-            resp.sendRedirect(req.getContextPath() + "/userinfo");
+            if (newpassword.equals(confirmpassword) && !newpassword.equals(password)) {
+                user.setPassword(newpassword);
+                user.setLogin(login);
+                resp.sendRedirect(req.getContextPath() + "/userinfo");
+            }
+            else {
+                resp.sendRedirect(req.getContextPath() + "/" + "editmaininfo?userId=" + id);
+            }
         }
         // Пишем проверки на несовпадение логинов, емэйлов как-то делаем авто добавляемый id,или на несовпадение их
         //Потом еще добавить id в юзер инфо и чекнуть, что будет если нового юзера добавить

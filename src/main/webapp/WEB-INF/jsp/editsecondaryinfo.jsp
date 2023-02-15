@@ -1,12 +1,12 @@
 <%@ page import="com.example.testapp.model.UserOperations" %>
 <%@ page import="com.example.testapp.model.User" %>
 <%@ page import="static com.example.testapp.model.User.ROLE.USER" %>
-<%@ page import="com.example.testapp.servlet.UserEdit" %>
+<%@ page import="com.example.testapp.servlet.EditSecInfo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/useradd.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/useredit.css" rel="stylesheet" type="text/css">
 
     <title>User add</title>
 </head>
@@ -27,8 +27,6 @@
                 <%
                     String userId = request.getParameter("userId");
                     User user = UserOperations.getById(Integer.parseInt(userId));
-                    String login = user.getLogin();
-                    String password = user.getPassword();
                     String email = user.getEmail();
                     String surname = user.getSurname();
                     String name = user.getName();
@@ -36,17 +34,6 @@
                     String birthday = user.getBirthday();
                     User.ROLE role = user.getRole();
                 %>
-                <tr>
-                    <td>Login</td>
-                    <td><input type="text" name="login" value="<%=login%>" minlength="5" maxlength="16" required></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" name="password" value="<%=password%>"
-                               pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*"
-                               autocomplete="off" required></td>
-                </tr>
-
                 <tr>
                     <td>email</td>
                     <td><input type="email" name="email"
@@ -74,7 +61,7 @@
                 <tr>
                     <td>role</td>
                     <td>
-                        <input type="radio" name="role1" value="user" checked> USER<br>
+                        <input type="radio" name="role1" value="user" > USER<br>
                         <input type="radio" name="role2" value="admin"> ADMIN<br>
                         <%--                    <td><input type="text" name="role" placeholder="Enter role" pattern="[USER/ROLE]" required></td>--%>
                     </td>
