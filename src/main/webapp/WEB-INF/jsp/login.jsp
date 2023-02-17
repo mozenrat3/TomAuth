@@ -28,7 +28,7 @@
                     <td>Password</td>
                     <td><input type="password" name="password" placeholder="Enter your password" required></td>
                 </tr>
-                <div id="error">
+                <div id="error1">
                     <%
                         String login_msg=(String)request.getAttribute("error");
                         if(login_msg!=null)
