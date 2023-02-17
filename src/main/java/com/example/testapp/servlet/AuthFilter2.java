@@ -12,7 +12,7 @@ import java.util.List;
 
 @WebFilter(value = "/*",filterName = "authfilter")
 public class AuthFilter2 implements Filter {
-    static List<String>  userUrls = List.of("/login", "/welcome","/logout");
+    static List<String>  userUrls = List.of("/login", "/welcome","/logout","/css/login.css");
     @Override
     public void init(FilterConfig fConfig) throws ServletException {
 

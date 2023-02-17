@@ -1,52 +1,42 @@
-.container {
-    width: 100%;
-    max-width: 1200px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: antiquewhite;
+* {
+    margin: 0;
 }
 
-/* flex-контейнер */
-.row {
-    display: -ms-flexbox;
+html, body {
+    height: 100%;
+}
+
+body {
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    flex-direction: column;
 }
 
-/* общие настройки для flex-элементов */
-.col {
+main {
+    flex: 1 0 auto;
+    padding: 16px;
+    background: #e6f2ff;
     position: relative;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
 }
 
-/* ширина блоков .col__article и .col__aside по умолчанию */
-.col__article,
-.col__aside {
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
+footer {
+    flex: 0 0 auto;
 }
 
-/* ширина блоков .col__article и .col__aside для больших экранов */
-@media (min-width: 992px) {
-    /* 2/3 от ширины контейнера */
-    .col__article {
-        -ms-flex: 0 0 66.666667%;
-        flex: 0 0 66.666667%;
-        max-width: 66.666667%;
-    }
+#myform {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
-    /* 1/3 от ширины контейнера */
-    .col__aside {
-        -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-    }
+#formname {
+    position: absolute;
+    left: 45%;
+    top: -70%;
+
+}
+#error{
+    position: absolute;
+    top: -70%;
+    left: 125%;
 }
