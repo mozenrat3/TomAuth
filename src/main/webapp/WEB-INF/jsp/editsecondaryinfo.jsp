@@ -61,8 +61,8 @@
                 <tr>
                     <td>role</td>
                     <td>
-                        <input type="radio" name="role1" value="user" > USER<br>
-                        <input type="radio" name="role2" value="admin"> ADMIN<br>
+                        <input type="radio" name="role" id="role1" value="user" > USER<br>
+                        <input type="radio" name="role" id="role2" value="admin"> ADMIN<br>
                         <%--                    <td><input type="text" name="role" placeholder="Enter role" pattern="[USER/ROLE]" required></td>--%>
                     </td>
 

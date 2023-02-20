@@ -27,6 +27,7 @@ public class UserAdd extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         int id = Integer.parseInt(req.getParameter("id"));
         String login = req.getParameter("login");
         String password = req.getParameter("password");
@@ -41,6 +42,7 @@ public class UserAdd extends HttpServlet {
         } else {
             role = User.ROLE.valueOf("ADMIN");
         }
+
          if (UserOperations.getUserByLogin(login) != null && UserOperations.getUserByEmail(email) != null ) {
             req.setAttribute("error", "u entered email and login, that exists in system,please choose a new email and login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
