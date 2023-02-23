@@ -18,9 +18,6 @@ main {
     position: relative;
 }
 
-footer {
-    flex: 0 0 auto;
-}
 
 #myform {
     position: absolute;

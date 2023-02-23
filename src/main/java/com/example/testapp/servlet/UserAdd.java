@@ -43,22 +43,24 @@ public class UserAdd extends HttpServlet {
             role = User.ROLE.valueOf("ADMIN");
         }
 
-         if (UserOperations.getUserByLogin(login) != null && UserOperations.getUserByEmail(email) != null ) {
+        if (UserOperations.getUserByLogin(login) != null && UserOperations.getUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email and login, that exists in system,please choose a new email and login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
-            disp.include(req,resp);
-        }
-        else if (UserOperations.getUserByEmail(email) != null) {
+            disp.include(req, resp);
+        } else if (UserOperations.getUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email, that exists in system,please choose a new email");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
-            disp.include(req,resp);
+            disp.include(req, resp);
 
-        }  else if (UserOperations.getUserByLogin(login) != null) {
+        } else if (UserOperations.getUserByLogin(login) != null) {
             req.setAttribute("error", "u entered login, that exists in system,please choose a new login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
-            disp.include(req,resp);
-            //  resp.sendRedirect(req.getContextPath() + "/useradd");
-        }else {
+            disp.include(req, resp);
+        } else if (UserOperations.getUserById(id) != null) {
+            req.setAttribute("error", "u entered id, that exists in system,please choose a new id");
+            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
+            disp.include(req, resp);
+        } else {
             User user = new User(id, login, password, email, surname, name, patronymic, birthday, role);
             UserOperations userOperations = new UserOperations();
             userOperations.add(user);

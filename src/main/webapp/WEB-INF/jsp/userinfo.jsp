@@ -1,20 +1,17 @@
-<%@ page import="com.example.testapp.model.User" %>
+<%@ page  import="com.example.testapp.model.User" %>
 <%@ page import="com.example.testapp.model.UserOperations" %>
 <%@ page import="static com.example.testapp.model.UserOperations.getAllUsers" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/userinfo.css" rel="stylesheet" type="text/css">
     <title>User Info</title>
 </head>
 <body>
-<header>
-    <jsp:include page="header.jsp"></jsp:include>
-</header>
-<div id="menu">
-    <jsp:include page="menu.jsp"></jsp:include>
-</div>
+<t:headers></t:headers>
 <div id="userCrud">
     <div id="refs">
         <a href="${pageContext.request.contextPath}/useradd">User Add</a>
@@ -42,7 +39,6 @@
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
-
             for (User user : getAllUsers()) {
                 int id = user.getId();
                 String login = user.getLogin();
@@ -62,8 +58,6 @@
 </main>
 
 </body>
-<footer>
-    <jsp:include page="footer.jsp"></jsp:include>
-</footer>
+<t:footers></t:footers>
 
 </html>

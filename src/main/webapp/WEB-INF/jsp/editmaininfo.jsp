@@ -4,6 +4,7 @@
 <%@ page import="com.example.testapp.servlet.EditSecInfo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
   <link href="${pageContext.request.contextPath}/css/useredit2.css" rel="stylesheet" type="text/css">
@@ -11,14 +12,7 @@
   <title>Edit Main Info</title>
 </head>
 <body>
-<header>
-  <jsp:include page="header.jsp"></jsp:include>
-</header>
-<div id="menu">
-  <jsp:include page="menu.jsp"></jsp:include>
-</div>
-
-
+<t:headers></t:headers>
 <main>
   <div id="myform">
     <div id="formname"><h2>user edit</h2></div>
@@ -71,9 +65,7 @@
   </div>
 </main>
 </body>
-<footer>
-  <jsp:include page="footer.jsp"></jsp:include>
-</footer>
+<t:footers></t:footers>
 
 
 </html>

@@ -36,9 +36,6 @@ td {
     border: 1px solid grey;
 }
 
-footer {
-    flex: 0 0 auto;
-}
 
 #userCrud {
     padding: 10px;

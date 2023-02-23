@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
     <title>Login Edit</title>
 </head>
 <body>
+<t:headers></t:headers>
 <td>Username:</td>
 <td><input type="text" value="${user.login}"/></td>
 <br>
@@ -34,4 +36,5 @@
     <br>
 
 </body>
+<t:footers></t:footers>
 </html>

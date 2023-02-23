@@ -1,20 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet" type="text/css">
-
-    <title>Sign in</title>
+    <title>Sign In</title>
 </head>
+
 <body>
-<header>
-    <jsp:include page="header.jsp"></jsp:include>
-</header>
-<div id="menu">
-    <jsp:include page="menu.jsp"></jsp:include>
-</div>
-
-
+<t:headers >
+</t:headers>
 <main>
     <div id="myform">
         <div id="formname"><h1>Sign in</h1></div>
@@ -48,9 +43,7 @@
     </div>
 </main>
 </body>
-<footer>
-    <jsp:include page="footer.jsp"></jsp:include>
-</footer>
-
-
+<t:footers >
+</t:footers>
 </html>
+

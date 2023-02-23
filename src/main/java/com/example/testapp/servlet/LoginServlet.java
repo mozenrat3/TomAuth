@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-
         User user = UserOperations.getUserByLoginPassword(login, password);
         if (user == null) {
                 req.setAttribute("error", "user is`nt exist, please enter your data correctly");

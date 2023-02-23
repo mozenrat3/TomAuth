@@ -3,7 +3,7 @@ package com.example.testapp.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserOperations {
+public  class UserOperations {
     private static final List<User> store = new ArrayList<>();
 
     // private static final int count = store.size();
@@ -16,7 +16,6 @@ public class UserOperations {
     }
 
     public static User getById(int id) {
-
         User result = new User();
         result.setId(-1);
 
@@ -64,8 +63,18 @@ public class UserOperations {
 
         return null;
     }
+    public static Integer getUserById(final Integer id) {
 
-    public static boolean deleteUserByLogin(final String login) {
+
+        for (User user : store) {
+            if (user.getId()==id) {
+                return user.getId();
+            }
+        }
+
+        return null;
+    }
+    public static  boolean deleteUserByLogin(final String login) {
         for (User user : store) {
             if (user.getLogin().equals(login)) {
 
