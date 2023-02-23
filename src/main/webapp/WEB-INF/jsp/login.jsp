@@ -17,11 +17,12 @@
             <table>
                 <tr>
                     <td>Login</td>
-                    <td><input type="text" name="login" placeholder="Enter your login" required></td>
+                    <td><input type="text" name="login" placeholder="Enter your login" minlength="5" maxlength="16" required></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password" placeholder="Enter your password" required></td>
+                    <td><input type="password" name="password" placeholder="Enter your password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*"
+                               autocomplete="off" required></td>
                 </tr>
                 <div id="error">
                     <%
