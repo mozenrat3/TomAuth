@@ -14,7 +14,15 @@ public  class UserOperations {
     public static List<User> getAllUsers() {
         return store;
     }
+    public static List<User> getAllUsersParams() {
+        List<User> result = (List<User>) new User();
 
+        for(User user : store){
+            result = (List<User>) user;
+
+        }
+        return result;
+    }
     public static User getById(int id) {
         User result = new User();
         result.setId(-1);
@@ -27,7 +35,6 @@ public  class UserOperations {
 
         return result;
     }
-
     public static User getUserByLoginPassword(final String login, final String password) {
 
 
