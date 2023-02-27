@@ -45,7 +45,7 @@
 <div id="menu">
     <div style="padding: 10px; height: 40px;background:antiquewhite">
         <div style="float: bottom; padding: 14px; text-align: center;">
-
+//c:url
             <a href="${pageContext.request.contextPath}/login">Sign In</a>
             |
             <a href="${pageContext.request.contextPath}/welcome">Main Page</a>

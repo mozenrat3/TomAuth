@@ -11,14 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Objects;
 
-@WebServlet("/editsecondaryinfo")
-public class EditSecInfo extends HttpServlet {
+@WebServlet("/editinfo")
+public class EditInfo extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = "/WEB-INF/jsp/editsecondaryinfo.jsp";
+        String path = "/WEB-INF/jsp/editinfo.jsp";
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
@@ -29,6 +28,10 @@ public class EditSecInfo extends HttpServlet {
         String userId = req.getParameter("userId");
         User user = UserOperations.getById(Integer.parseInt(userId));
         int id = Integer.parseInt(userId);
+        String login = req.getParameter("login");
+        String password = req.getParameter("password");
+        String newpassword = req.getParameter("newpassword");
+        String confirmpassword = req.getParameter("confirmpassword");
         String email = req.getParameter("email");
         String surname = req.getParameter("surname");
         String name = req.getParameter("name");
@@ -40,29 +43,38 @@ public class EditSecInfo extends HttpServlet {
         } else {
             role = User.ROLE.valueOf("ADMIN");
         }
-        PrintWriter out = resp.getWriter();
-
-        if ((UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
-          //  out.println("u entered login, that exists in system,please choose a new login");
-            req.setAttribute("error", "This is email exist in system");
-            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editsecondaryinfo.jsp");
+        if ((UserOperations.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login))) {
+            req.setAttribute("error", "This is login exist in system");
+            RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");
             disp.include(req,resp);
-            //resp.sendRedirect(req.getContextPath() + "/" + "editsecondaryinfo?userId=" + id);
-        } else {
+        }
+        else if ((!newpassword.equals(confirmpassword))||(newpassword.equals(password))||(UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
+            if((!newpassword.equals(confirmpassword))){
+                req.setAttribute("error", "new password dont equal confirm password");
+                RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");
+                disp.include(req,resp);
+            } else if (newpassword.equals(password)) {
+                req.setAttribute("error", "new password equal password");
+                RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");
+                disp.include(req,resp);
+            } else {
+                req.setAttribute("error", "This is email exist in system");
+                RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");
+                disp.include(req,resp);
+            }
+
+            }
+            else {
+            user.setPassword(newpassword);
+            user.setLogin(login);
             user.setEmail(email);
             user.setBirthday(birthday);
             user.setName(name);
             user.setPatronymic(patronymic);
             user.setSurname(surname);
             user.setRole(role);
-//            UserOperations userOperations = new UserOperations();
-//            userOperations.add(user);
             resp.sendRedirect(req.getContextPath() + "/userinfo");
+            }
         }
-        // Пишем проверки на несовпадение логинов, емэйлов как-то делаем авто добавляемый id,или на несовпадение их
-        //Потом еще добавить id в юзер инфо и чекнуть, что будет если нового юзера добавить
-        //User.ROLE role = User.ROLE.valueOf(req.getParameter("role"));
-
-        //  req.getSession().setAttribute("user", user);
     }
-}
+

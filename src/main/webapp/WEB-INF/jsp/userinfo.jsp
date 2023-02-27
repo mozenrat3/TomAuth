@@ -34,8 +34,7 @@
             <th>patronymic</th>
             <th>birthday</th>
             <th>role</th>
-            <th>editSecInfo</th>
-            <th>editMainInfo</th>
+            <th>editInfo</th>
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
@@ -50,8 +49,8 @@
                 String birthday = user.getBirthday();
                 User.ROLE role = user.getRole();
                 out.println("<tr><td>"+id +"</td><td>"+ login + "</td><td>" + password + "</td><td>" + email + "</td><td>" + surname + "</td><td>" + name + "</td><td>"
-                        + patronymic + "</td><td>" + birthday + "</td><td>" + role + "</td>"+"<td>"+"<a href="+ request.getContextPath() + "/" + "editsecondaryinfo?userId=" + id+">"+
-                        "EditSecondaryInfo"+"</a>"+"</td>"+"<td>"+"<a href="+ request.getContextPath() + "/" + "editmaininfo?userId=" + id+">"+"EditMainInfo"+"</a>"+"</td></tr>");
+                        + patronymic + "</td><td>" + birthday + "</td><td>" + role + "</td>"+"<td>"+"<a href="+ request.getContextPath() + "/" + "editinfo?userId=" + id+">"+
+                        "EditInfo"+"</a>"+"</td></tr>");
             }
         %>
     </table>
