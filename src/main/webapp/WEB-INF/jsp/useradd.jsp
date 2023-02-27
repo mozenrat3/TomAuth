@@ -5,8 +5,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/useradd.css" rel="stylesheet" type="text/css">
-
+    <link href="<c:url value="/css/useradd.css"/>" rel="stylesheet" type="text/css">
     <title>User add</title>
 </head>
 <body>

@@ -10,7 +10,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/welcome.css" rel="stylesheet" type="text/css">
+<link href="<c:url value="/css/welcome.css"/>" rel="stylesheet" type="text/css">
     <title>Welcome</title>
 </head>
 <body>

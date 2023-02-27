@@ -3,7 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/css/login.css"/>" rel="stylesheet" type="text/css">
     <title>Sign In</title>
 </head>
 

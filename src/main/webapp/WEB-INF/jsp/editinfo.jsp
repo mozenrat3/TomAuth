@@ -7,8 +7,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/useredit.css" rel="stylesheet" type="text/css">
-
+    <link href="<c:url value="/css/useredit.css"/>" rel="stylesheet" type="text/css">
     <title>User add</title>
 </head>
 <body>
@@ -107,6 +106,5 @@
 </main>
 </body>
 <t:footers></t:footers>
-
 
 </html>

@@ -5,7 +5,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/userdelete.css" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/css/userdelete.css"/>" rel="stylesheet" type="text/css">
 
     <title>User add</title>
 </head>

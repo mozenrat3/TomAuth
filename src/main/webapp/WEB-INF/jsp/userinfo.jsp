@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/userinfo.css" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/css/userinfo.css"/>" rel="stylesheet" type="text/css">
     <title>User Info</title>
 </head>
 <body>
