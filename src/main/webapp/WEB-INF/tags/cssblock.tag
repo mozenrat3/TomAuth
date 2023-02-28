@@ -3,7 +3,6 @@
 main {
 flex: 1 0 auto;
 padding: 16px;
-background: #e6f2ff;
 position: relative;
 }
 * {

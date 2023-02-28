@@ -27,7 +27,14 @@
         <div class="text-center">
             <p style="color: #59238F;">Sign-Up</p>
         </div>
-
+        <br>
+        <div id="error">
+            <%
+                String login_msg=(String)request.getAttribute("error");
+                if(login_msg!=null)
+                    out.println("<font color=red size=4px>"+login_msg+"</font>");
+            %>
+        </div>
     </div>
 </main>
 </body>
