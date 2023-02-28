@@ -14,9 +14,9 @@
 <t:headers></t:headers>
 <div id="userCrud">
     <div id="refs">
-        <a href="${pageContext.request.contextPath}/useradd">User Add</a>
+        <a href="<c:url value="/useradd"/>">User Add</a>
         |
-        <a href="${pageContext.request.contextPath}/userdelete">User Delete</a>
+        <a href="<c:url value="/userdelete"/>">User Delete</a>
     </div>
 
 </div>

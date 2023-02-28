@@ -3,18 +3,20 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="<c:url value="/css/login.css"/>" rel="stylesheet" type="text/css">
     <title>Sign In</title>
 </head>
 
 <body>
-<t:headers >
-</t:headers>
 <main>
     <div id="myform">
-        <div id="formname"><h1>Sign in</h1></div>
+        <div id="formname">
+            <div class = "header-h1"> <h1>Sign in</h1></div>
+
+        </div>
         <form method="post" action="">
-            <table>
+            <table class="table table-hover">
                 <tr>
                     <td>Login</td>
                     <td><input type="text" name="login" placeholder="Enter your login" minlength="5" maxlength="16" required></td>
