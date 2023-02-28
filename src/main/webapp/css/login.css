@@ -11,12 +11,12 @@ main {
 html, body {
     height: 100%;
 }
-.header-h1 {
+h1 {
     text-align: center;
     margin-bottom: .5rem;
 }
-.header-h1 h1 {
-    background: #0097a7;
+ h1 {
+    background: red;
     margin-bottom: 0;
     padding: .5rem 1rem;
     font-size: 1.25rem;
