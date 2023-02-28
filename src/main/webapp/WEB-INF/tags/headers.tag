@@ -1,24 +1,6 @@
 <%@ tag description="headertag" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <style>--%>
-<%--        * {--%>
-<%--            margin: 0;--%>
-<%--        }--%>
 
-<%--        html, body {--%>
-<%--            height: 100%;--%>
-<%--        }--%>
-
-<%--        body {--%>
-<%--            display: flex;--%>
-<%--            flex-direction: column;--%>
-<%--        }--%>
-
-<%--    </style>--%>
-<%--</head>--%>
-<%--<body>--%>
 
 <div id="header">
     <div style="background: #E0E0E0; height: 80px; padding: 5px;">
@@ -45,8 +27,6 @@
 <div id="menu">
     <div style="padding: 10px; height: 40px;background:antiquewhite">
         <div style="float: bottom; padding: 14px; text-align: center;">
-            <a href="<c:url value="/login"/>">Sign In</a>
-            |
             <a href="<c:url value="/welcome"/>">Main Page</a>
             |
             <a href="<c:url value="/userinfo"/>">User Info</a>

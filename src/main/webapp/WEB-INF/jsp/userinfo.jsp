@@ -10,6 +10,7 @@
     <link href="<c:url value="/css/userinfo.css"/>" rel="stylesheet" type="text/css">
     <title>User Info</title>
 </head>
+<t:cssblock></t:cssblock>
 <body>
 <t:headers></t:headers>
 <div id="userCrud">

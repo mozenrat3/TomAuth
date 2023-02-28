@@ -8,6 +8,7 @@
     <link href="<c:url value="/css/useradd.css"/>" rel="stylesheet" type="text/css">
     <title>User add</title>
 </head>
+<t:cssblock></t:cssblock>
 <body>
 <t:headers></t:headers>
 <main>

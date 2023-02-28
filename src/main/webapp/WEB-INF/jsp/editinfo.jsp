@@ -10,6 +10,7 @@
     <link href="<c:url value="/css/useredit.css"/>" rel="stylesheet" type="text/css">
     <title>User add</title>
 </head>
+<t:cssblock></t:cssblock>
 <body>
 <t:headers></t:headers>
 

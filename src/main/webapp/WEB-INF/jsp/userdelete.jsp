@@ -9,6 +9,7 @@
 
     <title>User add</title>
 </head>
+<t:cssblock></t:cssblock>
 <body>
 <t:headers></t:headers>
 <main>
