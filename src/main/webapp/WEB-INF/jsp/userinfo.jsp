@@ -23,7 +23,7 @@
 </div>
 <main>
 
-    <table>
+    <table class="table table-hover table-bordered">
 
         <tr>
             <th>id</th>

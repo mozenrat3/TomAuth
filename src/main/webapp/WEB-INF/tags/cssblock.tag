@@ -14,6 +14,7 @@ height: 100%;
 }
 
 body {
+background-color: antiquewhite;
 display: flex;
 flex-direction: column;
 }

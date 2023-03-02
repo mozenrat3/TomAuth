@@ -1,5 +1,5 @@
 table {
-    position: absolute;
+    position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -18,8 +18,6 @@ td {
 
 
 #userCrud {
-    padding: 10px;
-    height: 40px;
     background: lavender;
 }
 

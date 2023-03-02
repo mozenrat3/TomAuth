@@ -40,17 +40,6 @@ public class UserOperations {
         return null;
     }
 
-    public static User getUserByLogin2(final String login) {
-
-
-        for (User user : store) {
-            if (user.getLogin().equals(login)) {
-                return user;
-            }
-        }
-
-        return null;
-    }
 
     public static String getUserByLogin(final String login) {
 

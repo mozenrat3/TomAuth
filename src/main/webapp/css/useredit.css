@@ -1,17 +1,9 @@
 #myform {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#formname {
-    position: absolute;
-    left: 45%;
-    top: -15%;
-}
-#error{
-    position: absolute;
-    left: 120%;
-    top: -15%;
+    position: relative;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-left:10%;
+    padding-right:10%;
+    margin-top: 30px;
+    text-align: center
 }

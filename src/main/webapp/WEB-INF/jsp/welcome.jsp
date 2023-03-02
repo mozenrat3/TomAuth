@@ -10,8 +10,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link href="<c:url value="/css/welcome.css"/>" rel="stylesheet" type="text/css">
+     <link href="<c:url value="/css/welcome.css"/>" rel="stylesheet" type="text/css">
     <title>Welcome</title>
 </head>
 <t:cssblock></t:cssblock>
@@ -20,37 +19,40 @@
 
 </t:headers>
 <main>
-    <h3>Hello is this a main page</h3>
-    <c:set value="<%=UserOperations.getAllUsers()%>" var="userss"/>
-    <c:forEach items="${userss}" var="user">
-        <c:set var="birthday" value="${LocalDate.parse(user.birthday)}"/>
-        <fmt:parseDate value="${birthday}" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>
-        <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy" var="parsebirthday"/>
-        <c:set var="uid" value="${user.id}"/>
-        <c:choose>
-            <c:when test="${uid >= 3  && uid <5}">
-                <c:if test="${uid==4}">
-                    <c:out value="${user.role};${user.birthday};${user.patronymic};${user.name};${user.surname};${user.email};${user.password};${user.login};${user.id}половина"/>
-                    <br/>
-                </c:if>
-                <c:if test="${uid!=4}">
-                    <c:out value="${user.role};${user.birthday};${user.patronymic};${user.name};${user.surname};${user.email};${user.password};${user.login};${user.id}"/>
-                    <br/>
-                </c:if>
+    <div id = "tabl">
+        <h3>Hello is this a main page</h3>
+        <c:set value="<%=UserOperations.getAllUsers()%>" var="userss"/>
+        <c:forEach items="${userss}" var="user">
+            <c:set var="birthday" value="${LocalDate.parse(user.birthday)}"/>
+            <fmt:parseDate value="${birthday}" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>
+            <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy" var="parsebirthday"/>
+            <c:set var="uid" value="${user.id}"/>
+            <c:choose>
+                <c:when test="${uid >= 3  && uid <5}">
+                    <c:if test="${uid==4}">
+                        <c:out value="${user.role};${user.birthday};${user.patronymic};${user.name};${user.surname};${user.email};${user.password};${user.login};${user.id}половина"/>
+                        <br/>
+                    </c:if>
+                    <c:if test="${uid!=4}">
+                        <c:out value="${user.role};${user.birthday};${user.patronymic};${user.name};${user.surname};${user.email};${user.password};${user.login};${user.id}"/>
+                        <br/>
+                    </c:if>
 
-            </c:when>
-            <c:when test="${uid >= 5}">
-                <strong> <c:out
-                        value="${user.id};${user.login};${user.password};${user.email};${user.surname};${user.name};${user.patronymic};${parsebirthday};${user.role}"/></strong>
-                <br/>
-            </c:when>
-            <c:otherwise>
-                <c:out value="${user.id};${user.login};${user.password};${user.email};${user.surname};${user.name};${user.patronymic};${parsebirthday};${user.role}"/>
-                <br/>
-            </c:otherwise>
-        </c:choose>
+                </c:when>
+                <c:when test="${uid >= 5}">
+                    <strong> <c:out
+                            value="${user.id};${user.login};${user.password};${user.email};${user.surname};${user.name};${user.patronymic};${parsebirthday};${user.role}"/></strong>
+                    <br/>
+                </c:when>
+                <c:otherwise>
+                    <c:out value="${user.id};${user.login};${user.password};${user.email};${user.surname};${user.name};${user.patronymic};${parsebirthday};${user.role}"/>
+                    <br/>
+                </c:otherwise>
+            </c:choose>
 
-    </c:forEach>
+        </c:forEach>
+    </div>
+
 
 
 </main>

@@ -4,7 +4,6 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color: antiquewhite;
     height: 100vh;
     font-family: sans-serif;
     background-size: cover;
@@ -112,7 +111,4 @@ a:hover {
 
 p {
     color: #0000ff
-}
-#error{
-
 }

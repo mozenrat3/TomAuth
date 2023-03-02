@@ -7,39 +7,27 @@
 <head>
     <link href="<c:url value="/css/userdelete.css"/>" rel="stylesheet" type="text/css">
 
-    <title>User add</title>
+    <title>User delete</title>
 </head>
 <t:cssblock></t:cssblock>
 <body>
 <t:headers></t:headers>
 <main>
-    <div id="myform">
-        <div id="formname"><h2>user delete</h2></div>
+    <div class="deleteBox">
+        <h3>User Delete</h3>
         <form method="post" action="">
-            <table>
-
-                <tr>
-                    <td>Login</td>
-                    <td><input type="text" name="login" placeholder="Enter  login" required></td>
-                </tr>
-                <div id="error">
-                    <%
-                        String delete_msg=(String)request.getAttribute("error");
-                        if(delete_msg!=null)
-                            out.println("<font color=red size=4px>"+delete_msg+"</font>");
-                    %>
-                </div>
-                <tr>
-                    <td colspan="1">
-
-                        <input type="submit" value="Submit">
-                    </td>
-                </tr>
-
-            </table>
-
-
+            <div class="inputBox"><input type="text" name="login" placeholder="Enter login to delete" id="uname"
+                                         minlength="5" maxlength="16" required>
+            </div>
+            <input type="submit" name="" value="Delete">
         </form>
+        <div id="error">
+            <%
+                String login_msg=(String)request.getAttribute("error");
+                if(login_msg!=null)
+                    out.println("<font color=red size=4px>"+login_msg+"</font>");
+            %>
+        </div>
     </div>
 </main>
 </body>
