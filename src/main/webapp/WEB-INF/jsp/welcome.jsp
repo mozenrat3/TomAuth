@@ -1,12 +1,11 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.testapp.model.UserOperations" %>
+<%@ page import="com.example.testapp.model.UserDaoImpl" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="users" class="com.example.testapp.model.User" scope="page"/>
-<jsp:useBean id="userop" class="com.example.testapp.model.UserOperations" scope="page"/>
-<jsp:useBean id="mda" class="com.example.testapp.servlet.FakeData" scope="page"/>
+<jsp:useBean id="userop" class="com.example.testapp.model.UserDaoImpl" scope="page"/>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
@@ -21,7 +20,10 @@
 <main>
     <div id = "tabl">
         <h3>Hello is this a main page</h3>
-        <c:set value="<%=UserOperations.getAllUsers()%>" var="userss"/>
+        <%
+            UserDaoImpl impl = new UserDaoImpl();
+        %>
+        <c:set value="<%=impl.getAllUsers()%>" var="userss"/>
         <c:forEach items="${userss}" var="user">
             <c:set var="birthday" value="${LocalDate.parse(user.birthday)}"/>
             <fmt:parseDate value="${birthday}" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>

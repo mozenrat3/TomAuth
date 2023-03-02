@@ -1,10 +1,8 @@
 <%@ page  import="com.example.testapp.model.User" %>
-<%@ page import="com.example.testapp.model.UserOperations" %>
-<%@ page import="static com.example.testapp.model.UserOperations.getAllUsers" %>
+<%@ page import="com.example.testapp.model.UserDaoImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-
 <html>
 <head>
     <link href="<c:url value="/css/userinfo.css"/>" rel="stylesheet" type="text/css">
@@ -39,7 +37,8 @@
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
-            for (User user : getAllUsers()) {
+                UserDaoImpl impl=new UserDaoImpl();
+            for (User user : impl.getAllUsers()) {
                 int id = user.getId();
                 String login = user.getLogin();
                 String password = user.getPassword();

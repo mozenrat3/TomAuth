@@ -1,7 +1,7 @@
 package com.example.testapp.servlet;
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserOperations;
+import com.example.testapp.model.UserDaoImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -37,33 +37,33 @@ public class UserAdd extends HttpServlet {
         String patronymic = req.getParameter("patronymic");
         String birthday = req.getParameter("birthday");
         User.ROLE role;
+        UserDaoImpl impl = new UserDaoImpl();
         if (req.getParameter("role1") != null) {
             role = User.ROLE.valueOf("USER");
         } else {
             role = User.ROLE.valueOf("ADMIN");
         }
 
-        if (UserOperations.getUserByLogin(login) != null && UserOperations.getUserByEmail(email) != null) {
+        if (impl.getUserByLogin(login) != null && impl.getUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email and login, that exists in system,please choose a new email and login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
-        } else if (UserOperations.getUserByEmail(email) != null) {
+        } else if (impl.getUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email, that exists in system,please choose a new email");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
 
-        } else if (UserOperations.getUserByLogin(login) != null) {
+        } else if (impl.getUserByLogin(login) != null) {
             req.setAttribute("error", "u entered login, that exists in system,please choose a new login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
-        } else if (UserOperations.getUserById(id) != null) {
+        } else if (impl.getUserById(id) != null) {
             req.setAttribute("error", "u entered id, that exists in system,please choose a new id");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
         } else {
             User user = new User(id, login, password, email, surname, name, patronymic, birthday, role);
-            UserOperations userOperations = new UserOperations();
-            userOperations.add(user);
+            impl.add(user);
             resp.sendRedirect(req.getContextPath() + "/userinfo");
         }
 

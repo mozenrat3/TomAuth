@@ -1,7 +1,7 @@
 package com.example.testapp.servlet;
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserOperations;
+import com.example.testapp.model.UserDaoImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -14,12 +14,12 @@ import static com.example.testapp.model.User.ROLE.USER;
 
 @WebListener
 public class FakeData implements ServletContextListener {
-    private AtomicReference<UserOperations> info;
+    private AtomicReference<UserDaoImpl> info;
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 
-        info = new AtomicReference<>(new UserOperations());
+        info = new AtomicReference<>(new UserDaoImpl());
 
         info.get().add(new User(1, "hellologin1", "Parampam_3", "test1@mail.ru", "shev", "dima", "serg", "2002-01-06", ADMIN));
         info.get().add(new User(2, "hellologin2", "Parampam_3", "test2@mail.ru", "kovz", "vlad", "dmitr", "2010-06-01", USER));

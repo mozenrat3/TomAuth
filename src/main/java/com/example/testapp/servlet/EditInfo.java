@@ -1,7 +1,7 @@
 package com.example.testapp.servlet;
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserOperations;
+import com.example.testapp.model.UserDaoImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -26,7 +26,8 @@ public class EditInfo extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userId = req.getParameter("userId");
-        User user = UserOperations.getById(Integer.parseInt(userId));
+        UserDaoImpl impl = new UserDaoImpl();
+        User user = impl.getById(Integer.parseInt(userId));
         int id = Integer.parseInt(userId);
         String login = req.getParameter("login");
         String password = req.getParameter("password");
@@ -43,12 +44,12 @@ public class EditInfo extends HttpServlet {
         } else {
             role = User.ROLE.valueOf("ADMIN");
         }
-        if ((UserOperations.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login))) {
+        if ((impl.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login))) {
             req.setAttribute("error", "This is login exist in system");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");
             disp.include(req,resp);
         }
-        else if ((!newpassword.equals(confirmpassword))||(newpassword.equals(password))||(UserOperations.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
+        else if ((!newpassword.equals(confirmpassword))||(newpassword.equals(password))||(impl.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
             if((!newpassword.equals(confirmpassword))){
                 req.setAttribute("error", "new password dont equal confirm password");
                 RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");

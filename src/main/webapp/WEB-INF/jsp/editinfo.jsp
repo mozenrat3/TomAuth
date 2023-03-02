@@ -1,4 +1,4 @@
-<%@ page import="com.example.testapp.model.UserOperations" %>
+<%@ page import="com.example.testapp.model.UserDaoImpl" %>
 <%@ page import="com.example.testapp.model.User" %>
 <%@ page import="static com.example.testapp.model.User.ROLE.USER" %>
 <%@ page import="com.example.testapp.servlet.EditInfo" %>
@@ -19,7 +19,8 @@
             <table class="table table-hover table-bordered table-sm table-group-divider border border-5">
                 <%
                     String userId = request.getParameter("userId");
-                    User user = UserOperations.getById(Integer.parseInt(userId));
+                    UserDaoImpl impl =new UserDaoImpl();
+                    User user = impl.getById(Integer.parseInt(userId));
                     String login = user.getLogin();
                     String password = user.getPassword();
                     String email = user.getEmail();

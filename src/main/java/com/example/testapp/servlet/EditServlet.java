@@ -2,7 +2,7 @@ package com.example.testapp.servlet;
 
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserOperations;
+import com.example.testapp.model.UserDaoImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -42,7 +42,8 @@ public class EditServlet extends HttpServlet {
         String confirmpassword = req.getParameter("comfirmpassword");
         String seslogin = (String) req.getSession().getAttribute("login");
         String sespassword = (String) req.getSession().getAttribute("password");
-        User user = UserOperations.getUserByLoginPassword(seslogin, sespassword);
+        UserDaoImpl impl = new UserDaoImpl();
+        User user = impl.getUserByLoginPassword(seslogin, sespassword);
         if (seslogin.equals(login) && sespassword.equals(password)) {
             if (newpassword.equals(confirmpassword)) {
                 user.setPassword(newpassword);

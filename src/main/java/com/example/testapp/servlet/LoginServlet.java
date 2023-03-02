@@ -1,7 +1,7 @@
 package com.example.testapp.servlet;
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserOperations;
+import com.example.testapp.model.UserDaoImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -29,7 +29,8 @@ public class LoginServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        User user = UserOperations.getUserByLoginPassword(login, password);
+        UserDaoImpl impl = new UserDaoImpl();
+        User user = impl.getUserByLoginPassword(login, password);
         if (user == null) {
                 req.setAttribute("error", "user is`nt exist, please enter your data correctly");
 
