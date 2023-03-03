@@ -1,4 +1,4 @@
-package com.example.testapp.servlet;
+package com.example.testapp.web;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import static com.example.testapp.model.User.ROLE.ADMIN;
 
 @WebServlet("/welcome")
 public class WelcomeServlet extends HttpServlet {

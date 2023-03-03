@@ -1,6 +1,5 @@
-package com.example.testapp.servlet;
+package com.example.testapp.web;
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserDaoImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

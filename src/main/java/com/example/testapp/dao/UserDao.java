@@ -1,4 +1,6 @@
-package com.example.testapp.model;
+package com.example.testapp.dao;
+
+import com.example.testapp.model.User;
 
 import java.util.List;
 

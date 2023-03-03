@@ -1,11 +1,10 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.testapp.model.UserDaoImpl" %>
 <%@ page import="java.time.LocalDate" %>
+<%@ page import="com.example.testapp.service.UserServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="users" class="com.example.testapp.model.User" scope="page"/>
-<jsp:useBean id="userop" class="com.example.testapp.model.UserDaoImpl" scope="page"/>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
@@ -21,7 +20,7 @@
     <div id = "tabl">
         <h3>Hello is this a main page</h3>
         <%
-            UserDaoImpl impl = new UserDaoImpl();
+            UserServiceImpl impl = new UserServiceImpl();
         %>
         <c:set value="<%=impl.getAllUsers()%>" var="userss"/>
         <c:forEach items="${userss}" var="user">

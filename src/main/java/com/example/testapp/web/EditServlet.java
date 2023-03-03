@@ -1,8 +1,8 @@
-package com.example.testapp.servlet;
+package com.example.testapp.web;
 
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserDaoImpl;
+import com.example.testapp.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,11 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import static com.example.testapp.model.SearchVariables.*;
 
 @WebServlet("/loginedit")
 public class EditServlet extends HttpServlet {
@@ -42,7 +38,7 @@ public class EditServlet extends HttpServlet {
         String confirmpassword = req.getParameter("comfirmpassword");
         String seslogin = (String) req.getSession().getAttribute("login");
         String sespassword = (String) req.getSession().getAttribute("password");
-        UserDaoImpl impl = new UserDaoImpl();
+        UserServiceImpl impl = new UserServiceImpl();
         User user = impl.getUserByLoginPassword(seslogin, sespassword);
         if (seslogin.equals(login) && sespassword.equals(password)) {
             if (newpassword.equals(confirmpassword)) {

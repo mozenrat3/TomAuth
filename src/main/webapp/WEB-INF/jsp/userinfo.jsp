@@ -1,5 +1,5 @@
 <%@ page  import="com.example.testapp.model.User" %>
-<%@ page import="com.example.testapp.model.UserDaoImpl" %>
+<%@ page import="com.example.testapp.service.UserServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -37,7 +37,7 @@
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
-                UserDaoImpl impl=new UserDaoImpl();
+            UserServiceImpl impl = new UserServiceImpl();
             for (User user : impl.getAllUsers()) {
                 int id = user.getId();
                 String login = user.getLogin();

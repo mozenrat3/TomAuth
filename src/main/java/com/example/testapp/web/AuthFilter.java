@@ -1,9 +1,8 @@
 
 
-package com.example.testapp.servlet;
+package com.example.testapp.web;
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserDaoImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -11,11 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicReference;
-
-import static com.example.testapp.model.SearchVariables.*;
-import static java.lang.Boolean.TRUE;
-import static java.util.Objects.nonNull;
 
 @WebFilter(value = "/*", filterName = "startfilter")
 public class AuthFilter implements Filter {

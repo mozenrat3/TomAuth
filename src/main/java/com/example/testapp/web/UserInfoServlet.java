@@ -1,7 +1,4 @@
-package com.example.testapp.servlet;
-
-import com.example.testapp.model.User;
-import com.example.testapp.model.UserDaoImpl;
+package com.example.testapp.web;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

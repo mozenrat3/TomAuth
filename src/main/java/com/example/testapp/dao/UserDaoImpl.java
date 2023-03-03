@@ -1,10 +1,10 @@
-package com.example.testapp.model;
+package com.example.testapp.dao;
+
+import com.example.testapp.dao.UserDao;
+import com.example.testapp.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.testapp.model.User.ROLE.ADMIN;
-import static com.example.testapp.model.User.ROLE.USER;
 
 public class UserDaoImpl implements UserDao {
    private final static List<User> store = new ArrayList<User>();

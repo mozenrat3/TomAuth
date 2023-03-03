@@ -1,7 +1,7 @@
-package com.example.testapp.servlet;
+package com.example.testapp.web;
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserDaoImpl;
+import com.example.testapp.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -10,9 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/useradd")
 public class UserAdd extends HttpServlet {
@@ -37,7 +35,7 @@ public class UserAdd extends HttpServlet {
         String patronymic = req.getParameter("patronymic");
         String birthday = req.getParameter("birthday");
         User.ROLE role;
-        UserDaoImpl impl = new UserDaoImpl();
+        UserServiceImpl impl = new UserServiceImpl();
         if (req.getParameter("role1") != null) {
             role = User.ROLE.valueOf("USER");
         } else {

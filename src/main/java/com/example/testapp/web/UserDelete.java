@@ -1,7 +1,5 @@
-package com.example.testapp.servlet;
-
-import com.example.testapp.model.User;
-import com.example.testapp.model.UserDaoImpl;
+package com.example.testapp.web;
+import com.example.testapp.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -10,10 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.*;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 
 @WebServlet("/userdelete")
 public class UserDelete extends HttpServlet {
@@ -29,7 +24,7 @@ public class UserDelete extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
-        UserDaoImpl impl = new UserDaoImpl();
+        UserServiceImpl impl = new UserServiceImpl();
         if(impl.getUserByLogin(login) == null){
             req.setAttribute("error", "This user does`nt exist");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");

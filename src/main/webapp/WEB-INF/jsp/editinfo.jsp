@@ -1,7 +1,7 @@
-<%@ page import="com.example.testapp.model.UserDaoImpl" %>
 <%@ page import="com.example.testapp.model.User" %>
 <%@ page import="static com.example.testapp.model.User.ROLE.USER" %>
-<%@ page import="com.example.testapp.servlet.EditInfo" %>
+<%@ page import="com.example.testapp.web.EditInfo" %>
+<%@ page import="com.example.testapp.service.UserServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -19,7 +19,7 @@
             <table class="table table-hover table-bordered table-sm table-group-divider border border-5">
                 <%
                     String userId = request.getParameter("userId");
-                    UserDaoImpl impl =new UserDaoImpl();
+                    UserServiceImpl impl = new UserServiceImpl();
                     User user = impl.getById(Integer.parseInt(userId));
                     String login = user.getLogin();
                     String password = user.getPassword();

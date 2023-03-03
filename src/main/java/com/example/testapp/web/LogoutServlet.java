@@ -1,4 +1,4 @@
-package com.example.testapp.servlet;
+package com.example.testapp.web;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,14 +13,8 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-
         final HttpSession session = req.getSession();
         session.invalidate();
-//        session.removeAttribute("password");
-//        session.removeAttribute("login");
-//        session.removeAttribute("role");
-
         resp.sendRedirect(super.getServletContext().getContextPath());
     }
 

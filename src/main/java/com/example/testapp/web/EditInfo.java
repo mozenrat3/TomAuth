@@ -1,7 +1,7 @@
-package com.example.testapp.servlet;
+package com.example.testapp.web;
 
 import com.example.testapp.model.User;
-import com.example.testapp.model.UserDaoImpl;
+import com.example.testapp.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -26,7 +26,7 @@ public class EditInfo extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userId = req.getParameter("userId");
-        UserDaoImpl impl = new UserDaoImpl();
+        UserServiceImpl impl = new UserServiceImpl();
         User user = impl.getById(Integer.parseInt(userId));
         int id = Integer.parseInt(userId);
         String login = req.getParameter("login");
