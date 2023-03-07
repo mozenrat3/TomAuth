@@ -37,7 +37,7 @@
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
-            UserServiceImpl impl = new UserServiceImpl();
+            UserServiceImpl impl = UserServiceImpl.getInstance();
             for (User user : impl.getAllUsers()) {
                 int id = user.getId();
                 String login = user.getLogin();

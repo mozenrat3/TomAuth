@@ -31,14 +31,13 @@ public class EditServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //   String login = (String) req.getSession().getAttribute(user.);
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         String newpassword = req.getParameter("newpassword");
         String confirmpassword = req.getParameter("comfirmpassword");
         String seslogin = (String) req.getSession().getAttribute("login");
         String sespassword = (String) req.getSession().getAttribute("password");
-        UserServiceImpl impl = new UserServiceImpl();
+        UserServiceImpl impl = UserServiceImpl.getInstance();
         User user = impl.getUserByLoginPassword(seslogin, sespassword);
         if (seslogin.equals(login) && sespassword.equals(password)) {
             if (newpassword.equals(confirmpassword)) {

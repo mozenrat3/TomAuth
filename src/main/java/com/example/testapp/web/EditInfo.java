@@ -26,7 +26,7 @@ public class EditInfo extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userId = req.getParameter("userId");
-        UserServiceImpl impl = new UserServiceImpl();
+        UserServiceImpl impl =  UserServiceImpl.getInstance();
         User user = impl.getById(Integer.parseInt(userId));
         int id = Integer.parseInt(userId);
         String login = req.getParameter("login");

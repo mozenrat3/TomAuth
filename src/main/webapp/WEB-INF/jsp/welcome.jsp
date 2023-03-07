@@ -20,7 +20,7 @@
     <div id = "tabl">
         <h3>Hello is this a main page</h3>
         <%
-            UserServiceImpl impl = new UserServiceImpl();
+            UserServiceImpl impl = UserServiceImpl.getInstance();
         %>
         <c:set value="<%=impl.getAllUsers()%>" var="userss"/>
         <c:forEach items="${userss}" var="user">

@@ -19,7 +19,7 @@
             <table class="table table-hover table-bordered table-sm table-group-divider border border-5">
                 <%
                     String userId = request.getParameter("userId");
-                    UserServiceImpl impl = new UserServiceImpl();
+                    UserServiceImpl impl = UserServiceImpl.getInstance();
                     User user = impl.getById(Integer.parseInt(userId));
                     String login = user.getLogin();
                     String password = user.getPassword();

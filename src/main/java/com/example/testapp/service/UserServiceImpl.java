@@ -1,12 +1,21 @@
 package com.example.testapp.service;
 
+import com.example.testapp.dao.UserDao;
 import com.example.testapp.dao.UserDaoImpl;
 import com.example.testapp.model.User;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    UserDaoImpl impl = new UserDaoImpl();
+    private UserServiceImpl(){
+    }
+    private static class SingletonHolder {
+        public static final UserServiceImpl HOLDER_INSTANCE = new UserServiceImpl();
+    }
+    public static UserServiceImpl getInstance() {
+        return UserServiceImpl.SingletonHolder.HOLDER_INSTANCE;
+    }
+    private final UserDaoImpl impl = UserDaoImpl.getInstance();
 
     @Override
     public List<User> getAllUsers() {

@@ -35,7 +35,7 @@ public class UserAdd extends HttpServlet {
         String patronymic = req.getParameter("patronymic");
         String birthday = req.getParameter("birthday");
         User.ROLE role;
-        UserServiceImpl impl = new UserServiceImpl();
+        UserServiceImpl impl = UserServiceImpl.getInstance();
         if (req.getParameter("role1") != null) {
             role = User.ROLE.valueOf("USER");
         } else {
@@ -64,12 +64,5 @@ public class UserAdd extends HttpServlet {
             impl.add(user);
             resp.sendRedirect(req.getContextPath() + "/userinfo");
         }
-
-
-        // Пишем проверки на несовпадение логинов, емэйлов как-то делаем авто добавляемый id,или на несовпадение их
-        //Потом еще добавить id в юзер инфо и чекнуть, что будет если нового юзера добавить
-        //User.ROLE role = User.ROLE.valueOf(req.getParameter("role"));
-
-        //  req.getSession().setAttribute("user", user);
     }
 }

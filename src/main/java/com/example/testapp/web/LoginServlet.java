@@ -29,16 +29,14 @@ public class LoginServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        UserServiceImpl impl = new UserServiceImpl();
+        UserServiceImpl impl = UserServiceImpl.getInstance();
         User user = impl.getUserByLoginPassword(login, password);
         if (user == null) {
-                req.setAttribute("error", "user is`nt exist, please enter your data correctly");
-
-           // RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+            req.setAttribute("error", "user is`nt exist, please enter your data correctly");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-            disp.include(req,resp);
-           // dispatcher.forward(req, resp);
+            disp.include(req, resp);
         } else {
+            req.getSession().setAttribute("role", user.getRole());
             req.getSession().setAttribute("user", user);
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("password", password);

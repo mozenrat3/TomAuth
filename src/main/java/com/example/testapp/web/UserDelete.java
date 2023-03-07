@@ -24,7 +24,7 @@ public class UserDelete extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
-        UserServiceImpl impl = new UserServiceImpl();
+        UserServiceImpl impl = UserServiceImpl.getInstance();
         if(impl.getUserByLogin(login) == null){
             req.setAttribute("error", "This user does`nt exist");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");

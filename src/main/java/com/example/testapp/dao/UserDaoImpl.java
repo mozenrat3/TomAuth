@@ -5,9 +5,16 @@ import com.example.testapp.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class UserDaoImpl implements UserDao {
-   private final static List<User> store = new ArrayList<User>();
+    private final static List<User> store = new ArrayList<User>();
+    private UserDaoImpl(){
+    }
+    private static class SingletonHolder {
+        public static final UserDaoImpl HOLDER_INSTANCE = new UserDaoImpl();
+    }
+    public static UserDaoImpl getInstance() {
+        return SingletonHolder.HOLDER_INSTANCE;
+    }
     @Override
     public List<User> getAllUsers() {
         return store;
@@ -17,7 +24,6 @@ public class UserDaoImpl implements UserDao {
     public User getById(int id) {
         User result = new User();
         result.setId(-1);
-
         for (User user : store) {
             if (user.getId() == id) {
                 result = user;
@@ -66,7 +72,7 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
-        @Override
+    @Override
     public boolean deleteUserByLogin(final String login) {
         for (User user : store) {
             if (user.getLogin().equals(login)) {
