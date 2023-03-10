@@ -1,6 +1,8 @@
 package com.example.testapp.web;
 
 import com.example.testapp.model.User;
+import com.example.testapp.service.ServiceFactory;
+import com.example.testapp.service.UserService;
 import com.example.testapp.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +17,7 @@ import java.util.Objects;
 
 @WebServlet("/editinfo")
 public class EditInfo extends HttpServlet {
+    private final UserService userService = ServiceFactory.getInstance().createUserService();
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = "/WEB-INF/jsp/editinfo.jsp";
@@ -26,8 +29,7 @@ public class EditInfo extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userId = req.getParameter("userId");
-        UserServiceImpl impl =  UserServiceImpl.getInstance();
-        User user = impl.getById(Integer.parseInt(userId));
+        User user = userService.getById(Integer.parseInt(userId));
         int id = Integer.parseInt(userId);
         String login = req.getParameter("login");
         String password = req.getParameter("password");
@@ -44,12 +46,12 @@ public class EditInfo extends HttpServlet {
         } else {
             role = User.ROLE.valueOf("ADMIN");
         }
-        if ((impl.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login))) {
+        if ((userService.getUserByLogin(login) != null && !Objects.equals(user.getLogin(), login))) {
             req.setAttribute("error", "This is login exist in system");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");
             disp.include(req,resp);
         }
-        else if ((!newpassword.equals(confirmpassword))||(newpassword.equals(password))||(impl.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
+        else if ((!newpassword.equals(confirmpassword))||(newpassword.equals(password))||(userService.getUserByEmail(email) != null && !Objects.equals(user.getEmail(), email))) {
             if((!newpassword.equals(confirmpassword))){
                 req.setAttribute("error", "new password dont equal confirm password");
                 RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/editinfo.jsp");

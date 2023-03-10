@@ -1,7 +1,8 @@
 package com.example.testapp.web;
 
+import com.example.testapp.service.ServiceFactory;
 import com.example.testapp.model.User;
-import com.example.testapp.service.UserServiceImpl;
+import com.example.testapp.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -16,6 +17,8 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+    private final UserService userService = ServiceFactory.getInstance().createUserService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = "/WEB-INF/jsp/login.jsp";
@@ -29,8 +32,7 @@ public class LoginServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        UserServiceImpl impl = UserServiceImpl.getInstance();
-        User user = impl.getUserByLoginPassword(login, password);
+        User user = userService.getUserByLoginPassword(login, password);
         if (user == null) {
             req.setAttribute("error", "user is`nt exist, please enter your data correctly");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/login.jsp");

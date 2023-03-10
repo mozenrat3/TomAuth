@@ -1,5 +1,7 @@
 <%@ page  import="com.example.testapp.model.User" %>
 <%@ page import="com.example.testapp.service.UserServiceImpl" %>
+<%@ page import="com.example.testapp.service.UserService" %>
+<%@ page import="com.example.testapp.service.ServiceFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -37,8 +39,8 @@
         </tr>
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
-            UserServiceImpl impl = UserServiceImpl.getInstance();
-            for (User user : impl.getAllUsers()) {
+            UserService userService = ServiceFactory.getInstance().createUserService();
+            for (User user : userService.getAllUsers()) {
                 int id = user.getId();
                 String login = user.getLogin();
                 String password = user.getPassword();

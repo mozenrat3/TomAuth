@@ -2,6 +2,8 @@
 <%@ page import="static com.example.testapp.model.User.ROLE.USER" %>
 <%@ page import="com.example.testapp.web.EditInfo" %>
 <%@ page import="com.example.testapp.service.UserServiceImpl" %>
+<%@ page import="com.example.testapp.service.UserService" %>
+<%@ page import="com.example.testapp.service.ServiceFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -19,8 +21,8 @@
             <table class="table table-hover table-bordered table-sm table-group-divider border border-5">
                 <%
                     String userId = request.getParameter("userId");
-                    UserServiceImpl impl = UserServiceImpl.getInstance();
-                    User user = impl.getById(Integer.parseInt(userId));
+                     UserService userService = ServiceFactory.getInstance().createUserService();
+                    User user = userService.getById(Integer.parseInt(userId));
                     String login = user.getLogin();
                     String password = user.getPassword();
                     String email = user.getEmail();

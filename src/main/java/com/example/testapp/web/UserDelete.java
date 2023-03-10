@@ -1,4 +1,6 @@
 package com.example.testapp.web;
+import com.example.testapp.service.ServiceFactory;
+import com.example.testapp.service.UserService;
 import com.example.testapp.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +14,7 @@ import java.io.IOException;
 
 @WebServlet("/userdelete")
 public class UserDelete extends HttpServlet {
+    private final UserService userService = ServiceFactory.getInstance().createUserService();
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = "/WEB-INF/jsp/userdelete.jsp";
@@ -24,8 +27,8 @@ public class UserDelete extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
-        UserServiceImpl impl = UserServiceImpl.getInstance();
-        if(impl.getUserByLogin(login) == null){
+
+        if(userService.getUserByLogin(login) == null){
             req.setAttribute("error", "This user does`nt exist");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");
             disp.include(req,resp);
@@ -35,7 +38,7 @@ public class UserDelete extends HttpServlet {
             disp.include(req,resp);
         }
         else{
-            impl.deleteUserByLogin(login);
+            userService.deleteUserByLogin(login);
             resp.sendRedirect(req.getContextPath() + "/userinfo");
         }
 

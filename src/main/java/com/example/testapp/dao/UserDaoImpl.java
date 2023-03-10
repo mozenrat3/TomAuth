@@ -7,13 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 public class UserDaoImpl implements UserDao {
     private final static List<User> store = new ArrayList<User>();
+
+    private final static UserDaoImpl INSTANCE = new UserDaoImpl();
     private UserDaoImpl(){
     }
-    private static class SingletonHolder {
-        public static final UserDaoImpl HOLDER_INSTANCE = new UserDaoImpl();
-    }
     public static UserDaoImpl getInstance() {
-        return SingletonHolder.HOLDER_INSTANCE;
+        return INSTANCE;
     }
     @Override
     public List<User> getAllUsers() {

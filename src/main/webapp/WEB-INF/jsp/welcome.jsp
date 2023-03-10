@@ -1,6 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="com.example.testapp.service.UserServiceImpl" %>
+<%@ page import="com.example.testapp.service.UserService" %>
+<%@ page import="com.example.testapp.service.ServiceFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -20,9 +22,9 @@
     <div id = "tabl">
         <h3>Hello is this a main page</h3>
         <%
-            UserServiceImpl impl = UserServiceImpl.getInstance();
+            UserService userService = ServiceFactory.getInstance().createUserService();
         %>
-        <c:set value="<%=impl.getAllUsers()%>" var="userss"/>
+        <c:set value="<%=userService.getAllUsers()%>" var="userss"/>
         <c:forEach items="${userss}" var="user">
             <c:set var="birthday" value="${LocalDate.parse(user.birthday)}"/>
             <fmt:parseDate value="${birthday}" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>

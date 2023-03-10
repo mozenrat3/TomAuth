@@ -5,6 +5,10 @@ import com.example.testapp.model.User;
 import java.util.List;
 
 public interface UserDao {
+
+    //CRUD
+    //create read update delete findAll findBySalary findByLoginAndEmail readById
+
     List<User> getAllUsers();
 
     User getById(int id);

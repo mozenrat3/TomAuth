@@ -1,6 +1,8 @@
 package com.example.testapp.web;
 
 import com.example.testapp.model.User;
+import com.example.testapp.service.ServiceFactory;
+import com.example.testapp.service.UserService;
 import com.example.testapp.service.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +16,7 @@ import java.io.IOException;
 
 @WebServlet("/useradd")
 public class UserAdd extends HttpServlet {
+    private final UserService userService = ServiceFactory.getInstance().createUserService();
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = "/WEB-INF/jsp/useradd.jsp";
@@ -35,33 +38,32 @@ public class UserAdd extends HttpServlet {
         String patronymic = req.getParameter("patronymic");
         String birthday = req.getParameter("birthday");
         User.ROLE role;
-        UserServiceImpl impl = UserServiceImpl.getInstance();
         if (req.getParameter("role1") != null) {
             role = User.ROLE.valueOf("USER");
         } else {
             role = User.ROLE.valueOf("ADMIN");
         }
 
-        if (impl.getUserByLogin(login) != null && impl.getUserByEmail(email) != null) {
+        if (userService.getUserByLogin(login) != null && userService.getUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email and login, that exists in system,please choose a new email and login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
-        } else if (impl.getUserByEmail(email) != null) {
+        } else if (userService.getUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email, that exists in system,please choose a new email");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
 
-        } else if (impl.getUserByLogin(login) != null) {
+        } else if (userService.getUserByLogin(login) != null) {
             req.setAttribute("error", "u entered login, that exists in system,please choose a new login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
-        } else if (impl.getUserById(id) != null) {
+        } else if (userService.getUserById(id) != null) {
             req.setAttribute("error", "u entered id, that exists in system,please choose a new id");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
         } else {
             User user = new User(id, login, password, email, surname, name, patronymic, birthday, role);
-            impl.add(user);
+            userService.add(user);
             resp.sendRedirect(req.getContextPath() + "/userinfo");
         }
     }
