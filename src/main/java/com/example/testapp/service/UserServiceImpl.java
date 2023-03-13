@@ -20,28 +20,28 @@ public class UserServiceImpl implements UserService {
    // private final UserDaoImpl impl = UserDaoImpl.getInstance();
 
     @Override
-    public List<User> getAllUsers() {
-        return userDao.getAllUsers();
+    public List<User> findAllUsers() {
+        return userDao.findAllUsers();
     }
 
     @Override
-    public User getById(int id) {
-        return userDao.getById(id);
+    public User findById(int id) {
+        return userDao.findById(id);
     }
 
     @Override
-    public User getUserByLoginPassword(String login, String password) {
-        return userDao.getUserByLoginPassword(login, password);
+    public User findUserByLoginPassword(String login, String password) {
+        return userDao.findUserByLoginPassword(login, password);
     }
 
     @Override
-    public String getUserByLogin(String login) {
-        return userDao.getUserByLogin(login);
+    public String readUserByLogin(String login) {
+        return userDao.readUserByLogin(login);
     }
 
     @Override
-    public Integer getUserById(Integer id) {
-        return userDao.getUserById(id);
+    public Integer readUserById(Integer id) {
+        return userDao.readUserById(id);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String getUserByEmail(String email) {
-        return userDao.getUserByEmail(email);
+    public String readUserByEmail(String email) {
+        return userDao.readUserByEmail(email);
     }
 
     @Override

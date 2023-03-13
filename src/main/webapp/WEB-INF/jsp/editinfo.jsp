@@ -22,7 +22,7 @@
                 <%
                     String userId = request.getParameter("userId");
                      UserService userService = ServiceFactory.getInstance().createUserService();
-                    User user = userService.getById(Integer.parseInt(userId));
+                    User user = userService.findById(Integer.parseInt(userId));
                     String login = user.getLogin();
                     String password = user.getPassword();
                     String email = user.getEmail();

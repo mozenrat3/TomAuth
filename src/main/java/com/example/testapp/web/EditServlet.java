@@ -38,7 +38,7 @@ public class EditServlet extends HttpServlet {
         String seslogin = (String) req.getSession().getAttribute("login");
         String sespassword = (String) req.getSession().getAttribute("password");
         UserServiceImpl impl = UserServiceImpl.getInstance();
-        User user = impl.getUserByLoginPassword(seslogin, sespassword);
+        User user = impl.findUserByLoginPassword(seslogin, sespassword);
         if (seslogin.equals(login) && sespassword.equals(password)) {
             if (newpassword.equals(confirmpassword)) {
                 user.setPassword(newpassword);

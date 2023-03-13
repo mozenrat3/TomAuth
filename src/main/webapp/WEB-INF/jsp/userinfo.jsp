@@ -40,7 +40,7 @@
         <%--Мб создать юзер лист в котором будем юзеров по id получать и потом выводить их--%>
         <%
             UserService userService = ServiceFactory.getInstance().createUserService();
-            for (User user : userService.getAllUsers()) {
+            for (User user : userService.findAllUsers()) {
                 int id = user.getId();
                 String login = user.getLogin();
                 String password = user.getPassword();

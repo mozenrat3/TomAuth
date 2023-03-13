@@ -15,12 +15,12 @@ public class UserDaoImpl implements UserDao {
         return INSTANCE;
     }
     @Override
-    public List<User> getAllUsers() {
+    public List<User> findAllUsers() {
         return store;
     }
 
     @Override
-    public User getById(int id) {
+    public User findById(int id) {
         User result = new User();
         result.setId(-1);
         for (User user : store) {
@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserByLoginPassword(final String login, final String password) {
+    public User findUserByLoginPassword(final String login, final String password) {
 
 
         for (User user : store) {
@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String getUserByLogin(final String login) {
+    public String readUserByLogin(final String login) {
 
 
         for (User user : store) {
@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Integer getUserById(final Integer id) {
+    public Integer readUserById(final Integer id) {
 
 
         for (User user : store) {
@@ -84,7 +84,7 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public String getUserByEmail(final String email) {
+    public String readUserByEmail(final String email) {
 
 
         for (User user : store) {

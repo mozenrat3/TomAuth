@@ -44,20 +44,20 @@ public class UserAdd extends HttpServlet {
             role = User.ROLE.valueOf("ADMIN");
         }
 
-        if (userService.getUserByLogin(login) != null && userService.getUserByEmail(email) != null) {
+        if (userService.readUserByLogin(login) != null && userService.readUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email and login, that exists in system,please choose a new email and login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
-        } else if (userService.getUserByEmail(email) != null) {
+        } else if (userService.readUserByEmail(email) != null) {
             req.setAttribute("error", "u entered email, that exists in system,please choose a new email");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
 
-        } else if (userService.getUserByLogin(login) != null) {
+        } else if (userService.readUserByLogin(login) != null) {
             req.setAttribute("error", "u entered login, that exists in system,please choose a new login");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);
-        } else if (userService.getUserById(id) != null) {
+        } else if (userService.readUserById(id) != null) {
             req.setAttribute("error", "u entered id, that exists in system,please choose a new id");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/useradd.jsp");
             disp.include(req, resp);

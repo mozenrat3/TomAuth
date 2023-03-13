@@ -24,7 +24,7 @@
         <%
             UserService userService = ServiceFactory.getInstance().createUserService();
         %>
-        <c:set value="<%=userService.getAllUsers()%>" var="userss"/>
+        <c:set value="<%=userService.findAllUsers()%>" var="userss"/>
         <c:forEach items="${userss}" var="user">
             <c:set var="birthday" value="${LocalDate.parse(user.birthday)}"/>
             <fmt:parseDate value="${birthday}" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>

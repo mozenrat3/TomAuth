@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        User user = userService.getUserByLoginPassword(login, password);
+        User user = userService.findUserByLoginPassword(login, password);
         if (user == null) {
             req.setAttribute("error", "user is`nt exist, please enter your data correctly");
             RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/login.jsp");

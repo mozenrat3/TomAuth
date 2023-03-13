@@ -5,19 +5,19 @@ import com.example.testapp.model.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> getAllUsers();
+    List<User> findAllUsers();
 
-    User getById(int id);
+    User findById(int id);
 
-    User getUserByLoginPassword(String login, String password);
+    User findUserByLoginPassword(String login, String password);
 
-    String getUserByLogin(String login);
+    String readUserByLogin(String login);
 
-    Integer getUserById(Integer id);
+    Integer readUserById(Integer id);
 
     boolean deleteUserByLogin(String login);
 
-    String getUserByEmail(String email);
+    String readUserByEmail(String email);
 
     boolean add(User user);
 }
